@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
   return (
     <div
       style={{
-        backgroundColor: "#282c34",
+        backgroundColor: "#1E1E1E",
         color: "#fff",
         textAlign: "center",
         paddingTop: 32,
