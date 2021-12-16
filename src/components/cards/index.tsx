@@ -13,10 +13,16 @@ export const Cards: React.FC = () => {
       }}
     >
       {(streamItems ?? []).map((streamItem) => (
-        <Col md={4} key={streamItem}>
+        <Col
+          style={{
+            marginBottom: 30,
+            paddingRight: 10,
+          }}
+          key={streamItem}
+        >
           <Card title={streamItem} />
         </Col>
-      ))}
+      ))} 
     </Row>
   );
 };

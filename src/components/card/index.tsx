@@ -14,12 +14,12 @@ export const Card: React.FC<CardProps> = ({ title, children, ...rest }) => {
     <>
       <AntdCard
         hoverable
-        style={{ width: 180, backgroundColor: "#1E1E1E"}}
+        style={{ width: 150, backgroundColor: "#1E1E1E"}}
         onClick={() => router.push(`/${title}`)}
       >
         <div
           style={{
-            height: 200,
+            height: 180,
             textAlign: "center",
             display: "flex",
             justifyContent: "center",
@@ -35,7 +35,15 @@ export const Card: React.FC<CardProps> = ({ title, children, ...rest }) => {
               zIndex: 2,
             }}
           />
-          <Title style={{color: "#fff", position: "absolute", zIndex: 0 }}>{title?.toString().toUpperCase()}</Title>
+          <Title
+            style={{
+              color: "#fff",
+              position: "absolute",
+              zIndex: 0
+              }}
+            >
+            {title?.toString().toUpperCase()}
+          </Title>
         </div>
       </AntdCard>
       <Text>{`Popular ${title}`}</Text>
