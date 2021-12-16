@@ -9,7 +9,7 @@ export const Cards: React.FC = () => {
     <Row
       style={{
         flex: 1,
-        padding: "40px 200px",
+        padding: "20px 200px",
       }}
     >
       {(streamItems ?? []).map((streamItem) => (

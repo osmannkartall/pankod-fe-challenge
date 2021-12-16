@@ -1,9 +1,17 @@
 import React from "react";
+import { Header, FilterWrapper, Cards, Footer } from "@components";
+import { SubHeader } from "@components/subheader";
 
 const Series: React.FC = () => {
   return (
-    <div>
-      Series
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
+      <Header title="Demo Streaming" />
+      <SubHeader info="Titles" />
+      <FilterWrapper />
+      <Cards />
+      <Footer />
     </div>
   );
 };
