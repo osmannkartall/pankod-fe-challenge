@@ -1,7 +1,5 @@
 import React from "react";
-
-import { Header, Cards, Footer } from "@components";
-import { SubHeader } from "@components/subheader";
+import { Header, SubHeader, Cards, Footer } from "@components";
 
 const Home: React.FC = () => {
   return (

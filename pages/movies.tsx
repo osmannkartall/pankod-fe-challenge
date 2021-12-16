@@ -1,6 +1,5 @@
 import React from "react";
-import { Header, FilterWrapper, Cards, Footer } from "@components";
-import { SubHeader } from "@components/subheader";
+import { Header, SubHeader, FilterWrapper, Cards, Footer } from "@components";
 
 const Movies: React.FC = () => {
   return (
