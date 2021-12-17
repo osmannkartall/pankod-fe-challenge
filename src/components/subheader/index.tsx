@@ -3,11 +3,7 @@ import { Typography } from 'antd';
 
 const { Title } = Typography;
 
-interface Title {
-  info: string
-}
-
-export const SubHeader: React.FC<Title> = (props: Title) => {
+export const SubHeader: React.FC<{ info: string }> = (props: { info: string }) => {
   const titleText = `Popular ${props.info}`;
 
   return (

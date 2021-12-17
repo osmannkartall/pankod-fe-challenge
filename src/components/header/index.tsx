@@ -3,11 +3,7 @@ import { Button, Typography } from 'antd';
 
 const { Title } = Typography;
 
-interface Header {
-  title: string,
-}
-
-export const Header: React.FC<Header> = (props: Header) => {
+export const Header: React.FC<{ title: string }> = (props: { title: string }) => {
   return (
     <div
       style={{
