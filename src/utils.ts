@@ -1,4 +1,5 @@
-import { Program } from "src/models/Program";
+import { Program } from "./models/Program";
+import { SortOrder } from "./models/SortOrder";
 
 interface Item {
   [key: string]: any;
@@ -12,7 +13,7 @@ export function filterByAttribute(items: Program[], attributeKey: string, attrib
   return result.sort((a, b) => a.title.localeCompare(b.title));
 };
 
-export function sortByAttribute(items: Item[], filterAttribute: string, sortOrder: string) {
+export function sortByAttribute(items: Item[], filterAttribute: string, sortOrder: SortOrder) {
   const filterAttributeValueType = typeof items[0][filterAttribute];
 
   if (filterAttributeValueType === "string" && sortOrder === "asc") {
