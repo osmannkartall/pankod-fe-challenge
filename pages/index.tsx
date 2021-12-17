@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, SubHeader, Cards, Footer } from "@components";
+import { Header, SubHeader, Footer, TileCards } from "@components";
 
 const Home: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     >
       <Header title="Demo Streaming" />
       <SubHeader info="Titles" />
-      <Cards />
+      <TileCards />
       <Footer />
     </div>
   );

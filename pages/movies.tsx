@@ -1,38 +1,23 @@
 import React, { useEffect } from "react";
-import { Header, SubHeader, FilterWrapper, Cards, Footer } from "@components";
-import { filterByAttribute } from "src/utils";
-
-const programsPath = 'mock/sample.json';
-
-const headers = { 
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-};
+import { Header, SubHeader, FilterWrapper, Footer, ProgramCards } from "@components";
+import { useStore } from "src/store";
+import { getPrograms } from "src/services/programsService";
 
 const Movies: React.FC = () => {
+  const { setPrograms } = useStore();
 
   useEffect(() => {
     let mounted = true;
     
-    const getMovies = async () => {
-      try {
-        const response = await fetch(programsPath, { headers })
-        const programs = await response.json();      
+    const fetchMovies = async () => {
+      const movies = await getPrograms("movie");
 
-        if (Array.isArray(programs?.entries)) {
-          const movies = filterByAttribute(programs.entries, "programType", "movie")
-          console.log(movies);
-        } else {
-          throw Error("An error occured");
-        }
-      } catch (err) {
-        console.error(new Date().toLocaleString(), err);
+      if (mounted && Array.isArray(movies)) {
+        setPrograms(movies);
       }
     }
 
-    if (mounted) {
-      getMovies();
-    }
+    fetchMovies();
 
     return () => {
       mounted = false;
@@ -46,7 +31,7 @@ const Movies: React.FC = () => {
       <Header title="Demo Streaming" />
       <SubHeader info="Titles" />
       <FilterWrapper />
-      <Cards />
+      <ProgramCards />
       <Footer />
     </div>
   );

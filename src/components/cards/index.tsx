@@ -1,10 +1,11 @@
 import React from "react";
 import { Row, Col } from "antd";
-import { Card } from "@components";
+import { ProgramCard, TileCard } from "@components";
+import { useStore } from "src/store";
 
 const streamItems = ["series", "movies"]
 
-export const Cards: React.FC = () => {
+export const TileCards: React.FC = () => {
   return (
     <Row
       style={{
@@ -16,11 +17,39 @@ export const Cards: React.FC = () => {
         <Col
           style={{
             marginBottom: 30,
-            paddingRight: 10,
+            paddingRight: 20,
           }}
           key={streamItem}
         >
-          <Card title={streamItem} />
+          <TileCard title={streamItem} />
+        </Col>
+      ))} 
+    </Row>
+  );
+};
+
+export const ProgramCards: React.FC = () => {
+  const { programs } = useStore();
+
+  return (
+    <Row
+      style={{
+        flex: 1,
+        padding: "20px 200px",
+      }}
+    >
+      {(programs ?? []).map((program) => (
+        <Col
+          style={{
+            marginBottom: 50,
+            paddingRight: 20,
+          }}
+          key={program.title}
+        >
+          <ProgramCard
+            title={`${program.title.substring(0, 20)}...`}
+            imageUrl={program.images["Poster Art"].url}
+          />
         </Col>
       ))} 
     </Row>

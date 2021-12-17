@@ -1,52 +1,58 @@
 import React from "react";
-import { Card as AntdCard } from "antd";
-import { CardProps } from "antd/lib/card";
 import { Typography } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router'
 
 const { Title, Text } = Typography;
 
-export const Card: React.FC<CardProps> = ({ title, children, ...rest }) => {
+export const ProgramCard: React.FC<{ title: string, imageUrl: string }> = ({ title, imageUrl }) => {
+  return (
+    <>
+      <div>
+        <img alt="example" width="192" height= "250" src={imageUrl} />
+      </div>
+      <Text>{title}</Text>
+    </>
+  );
+};
+
+export const TileCard: React.FC<{ title: string }> = ({ title }) => {
   const router = useRouter();
 
   return (
     <>
-      <AntdCard
-        hoverable
-        style={{ width: 150, backgroundColor: "#1E1E1E"}}
+      <div
+        style={{
+          backgroundColor: "black",
+          width: 192,
+          height: 250,
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
         onClick={() => router.push(`/${title}`)}
       >
-        <div
+        <PlayCircleOutlined
           style={{
-            height: 180,
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            color: "#fff",
+            fontSize: 100,
+            opacity: .2,
+            position: "absolute",
+            zIndex: 2,
           }}
-        >
-          <PlayCircleOutlined
-            style={{
-              color: "#fff",
-              fontSize: 100,
-              opacity: .2,
-              position: "absolute",
-              zIndex: 2,
+        />
+        <Title
+          style={{
+            color: "#fff",
+            position: "absolute",
+            zIndex: 0
             }}
-          />
-          <Title
-            style={{
-              color: "#fff",
-              position: "absolute",
-              zIndex: 0
-              }}
-            >
-            {title?.toString().toUpperCase()}
-          </Title>
-        </div>
-      </AntdCard>
+          >
+          {title?.toString().toUpperCase()}
+        </Title>
+      </div>
       <Text>{`Popular ${title}`}</Text>
     </>
   );
-};
+}
