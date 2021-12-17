@@ -1,5 +1,6 @@
 import React from "react";
 import { Select as AntSelect } from 'antd';
+import { ProgramFilterOptions } from "src/models/ProgramFilterOptions";
 
 const { Option } = AntSelect;
 
@@ -7,24 +8,27 @@ const cardWidth = 150;
 const numCardForAlignment = 2;
 const paddingForCard = 10;
 
-function handleChange(value: string) {
-  console.log(`selected ${value}`);
-}
+interface ProgramFilterSelectProps {
+  options: ProgramFilterOptions;
+  handleChange: (value: string) => void;
+};
 
-export const Select: React.FC = () => {
-
+export const ProgramFilterSelect: React.FC<ProgramFilterSelectProps> = (
+  { options, handleChange }
+) => {
   return (
     <AntSelect
       placeholder="Sort by"
-      style={{ width: cardWidth * numCardForAlignment +(numCardForAlignment - 1) * paddingForCard }}
+      style={{
+        width: cardWidth * numCardForAlignment + (numCardForAlignment - 1) * paddingForCard
+      }}
       onChange={handleChange}
     >
-      <Option value="jack">Jack</Option>
-      <Option value="lucy">Lucy</Option>
-      <Option value="disabled" disabled>
-        Disabled
-      </Option>
-      <Option value="Yiminghe">yiminghe</Option>
+      {
+        Object.entries(options).map(([optionKey, optionValue]) => (
+          <Option key={optionKey} value={optionKey}>{optionValue.title}</Option>
+        ))
+      }
     </AntSelect>
   );
 };

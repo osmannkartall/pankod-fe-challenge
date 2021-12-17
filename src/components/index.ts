@@ -7,5 +7,5 @@ export { TileCard, ProgramCard } from "./card";
 export { TileCards, ProgramCards } from "./cards";
 export { Footer } from "./footer";
 export { Searchbar } from "./searchbar";
-export { Select } from "./select";
+export { ProgramFilterSelect } from "./select";
 export { FilterWrapper } from "./filterWrapper";
