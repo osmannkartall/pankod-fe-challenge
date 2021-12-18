@@ -6,10 +6,11 @@ const cardWidth = 150;
 const numCardForAlignment = 3;
 const paddingForCard = 10;
 
-export const Searchbar: React.FC = () => {
+interface Searchbar {
+  onSearch: (value: string) => void;
+}
 
-  const onSearch = (value: string) => console.log(value);
-
+export const Searchbar: React.FC<Searchbar> = ({ onSearch }) => {
   return (
     <Search
       placeholder="Search..."

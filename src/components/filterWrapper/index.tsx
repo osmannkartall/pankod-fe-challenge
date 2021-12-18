@@ -2,7 +2,7 @@ import React from "react";
 import { ProgramFilterOptions } from "src/models/ProgramFilterOptions";
 import { useStore } from "src/store";
 import { sortByAttribute } from "src/utils";
-import { Searchbar, ProgramFilterSelect } from "..";
+import { ProgramFilterSelect } from "..";
 
 const options: ProgramFilterOptions = {
   "yearDesc": {
@@ -27,8 +27,8 @@ const options: ProgramFilterOptions = {
   },
 };
 
-export const FilterWrapper: React.FC = () => {
-  const { programs, setPrograms } = useStore(); 
+export const FilterWrapper: React.FC = ({ children }) => {
+  const { programs, setPrograms } = useStore();
 
   const handleChange = (optionValue: string) => {
     const filterAttribute = options[optionValue].filterAttribute;
@@ -47,7 +47,7 @@ export const FilterWrapper: React.FC = () => {
         padding: "20px 200px",
       }}
     >
-      <Searchbar />
+      {children}
       <ProgramFilterSelect options={options} handleChange={handleChange} />
     </div>
   );

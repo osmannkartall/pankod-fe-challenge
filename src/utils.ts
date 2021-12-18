@@ -5,9 +5,27 @@ interface Item {
   [key: string]: any;
 }
 
+// TODO: refactor filterByAttribute and filterBySearch functions
+
 export function filterByAttribute(items: Program[], attributeKey: string, attributeValue: string) {
   const result = items.filter(
     (item: Program) => item[attributeKey] === attributeValue && item.releaseYear >= 2010
+  );
+
+  return result.sort((a, b) => a.title.localeCompare(b.title));
+};
+
+export function filterBySearch(
+  items: Program[],
+  attributeKey: string,
+  attributeValue: string,
+  searchText: string
+) {
+  const result = items.filter(
+    (item: Program) => (
+      item[attributeKey] === attributeValue && item.releaseYear >= 2010
+        && item.title.toLocaleLowerCase().includes(searchText)
+    )
   );
 
   return result.sort((a, b) => a.title.localeCompare(b.title));
