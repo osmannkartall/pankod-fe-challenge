@@ -1,6 +1,6 @@
 import React from "react";
 import { ProgramFilterOptions } from "src/models/ProgramFilterOptions";
-import { useStore } from "src/store";
+import { useProgramsPageStore } from "src/store";
 import { sortByAttribute } from "src/utils";
 import { ProgramFilterSelect } from "..";
 
@@ -28,7 +28,7 @@ const options: ProgramFilterOptions = {
 };
 
 export const FilterWrapper: React.FC = ({ children }) => {
-  const { programs, setPrograms } = useStore();
+  const { programs, setPrograms } = useProgramsPageStore();
 
   const handleChange = (optionValue: string) => {
     const filterAttribute = options[optionValue].filterAttribute;

@@ -3,7 +3,7 @@ import { Program } from "./models/Program";
 import { persist } from "zustand/middleware"
 import { getAllPrograms } from "./services/programsService";
 
-const initialProgramsState = {
+const programsPageInitialState = {
   programs: [],
   page: 1,
   loading: true,
@@ -11,42 +11,63 @@ const initialProgramsState = {
   hasMore: true,
 };
 
-interface ProgramState {
+interface ProgramsPageState {
   programs: Program[];
-  setPrograms: (programs: Program[]) => void;
   page: number;
-  setPage: (page: number) => void;
   loading: boolean;
-  setLoading: (loading: boolean) => void;
   error: boolean;
-  setError: (error: boolean) => void;
   hasMore: boolean;
+
+  setPrograms: (programs: Program[]) => void;
+
+  setPage: (page: number) => void;
+
+  setLoading: (loading: boolean) => void;
+
+  setError: (error: boolean) => void;
+
   setHasMore: (hasMore: boolean) => void;
+
   reset: () => void;
 };
 
-interface ProgramDBState {
+export const useProgramsPageStore = create<ProgramsPageState>(
+  set => ({
+    programs: programsPageInitialState.programs,
+    page: programsPageInitialState.page,
+    loading: programsPageInitialState.loading,
+    error: programsPageInitialState.error,
+    hasMore: programsPageInitialState.hasMore,
+
+    setPrograms: (programs: Program[]) => set({ programs }),
+
+    setPage: (page: number) => set({ page }),
+
+    setLoading: (loading: boolean) => set( { loading }),
+
+    setError: (error: boolean) => set( { error }),
+
+    setHasMore: (hasMore: boolean) => set( { hasMore }),
+
+    reset: () => set(
+      (actions) => ({
+        ...actions, 
+        programs: programsPageInitialState.programs,
+        page: programsPageInitialState.page,
+        loading: programsPageInitialState.loading,
+        error: programsPageInitialState.error,
+        hasMore: programsPageInitialState.hasMore,
+      }),
+    ),
+  }),
+);
+
+interface ProgramsDBState {
   programsDB: Program[];
   createProgramsDB: () => void;
 };
 
-export const useStore = create<ProgramState>(
-  set => ({
-    programs: [],
-    setPrograms: (programs: Program[]) => set({ programs }),
-    page: 1,
-    setPage: (page: number) => set({ page }),
-    loading: true,
-    setLoading: (loading: boolean) => set( { loading }),
-    error: false,
-    setError: (error: boolean) => set( { error }),
-    hasMore: true,
-    setHasMore: (hasMore: boolean) => set( { hasMore }),
-    reset: () => set( initialProgramsState ),
-  }),
-);
-
-export const useProgramsDB = create<ProgramDBState>(
+export const useProgramsDB = create<ProgramsDBState>(
   persist(
     (set, _) => ({
       programsDB: [],

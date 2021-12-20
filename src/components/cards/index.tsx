@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import { ProgramCard, TileCard } from "@components";
-import { useStore } from "src/store";
+import { useProgramsPageStore } from "src/store";
 
 const streamItems = ["series", "movies"]
 
@@ -29,7 +29,7 @@ export const TileCards: React.FC = () => {
 };
 
 export const ProgramCards: React.FC = () => {
-  const { programs } = useStore();
+  const { programs } = useProgramsPageStore();
 
   return (
     <Row

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Header, SubHeader, FilterWrapper, Footer, ProgramCards, Searchbar } from "@components";
-import { useProgramsDB, useStore } from "src/store";
+import { useProgramsDB, useProgramsPageStore } from "src/store";
 import { searchPrograms } from "src/services/programsService";
 import { Button } from "antd";
 import { filterByAttribute } from "src/utils";
@@ -18,7 +18,7 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
     setError,
     hasMore,
     setHasMore,
-  } = useStore();
+  } = useProgramsPageStore();
 
   const { programsDB } = useProgramsDB();
 
