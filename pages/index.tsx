@@ -13,7 +13,7 @@ const Home: React.FC = () => {
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
-      <Header title="Demo Streaming" />
+      <Header title="DEMO Streaming" />
       <SubHeader info="Titles" />
       <TileCards />
       <Footer />

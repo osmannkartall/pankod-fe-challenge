@@ -1,7 +1,4 @@
 import React from "react";
-import { Typography } from 'antd';
-
-const { Title } = Typography;
 
 export const SubHeader: React.FC<{ info: string }> = (props: { info: string }) => {
   const titleText = `Popular ${props.info}`;
@@ -13,10 +10,10 @@ export const SubHeader: React.FC<{ info: string }> = (props: { info: string }) =
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "0px 200px",
+        padding: "15px 0px 10px 200px",
       }}
     >
-      <Title level={2} style={{color: "#fff"}}>{titleText}</Title>
+      <div style={{ fontSize: 28, color: "#fff" }}>{titleText}</div>
     </div>
   );
 };

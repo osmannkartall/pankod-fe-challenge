@@ -1,7 +1,5 @@
 import React from "react";
-import { Button, Typography } from 'antd';
-
-const { Title } = Typography;
+import { Button } from 'antd';
 
 export const Header: React.FC<{ title: string }> = (props: { title: string }) => {
   return (
@@ -12,9 +10,10 @@ export const Header: React.FC<{ title: string }> = (props: { title: string }) =>
         justifyContent: "space-between",
         alignItems: "center",
         padding: "0px 200px",
+        paddingTop: 10
       }}
     >
-      <Title style={{color: "#fff"}}>{props.title}</Title>
+      <div style={{ fontSize: 40, color: "#fff" }}>{props.title}</div>
       <div>
         <Button
           type="link"

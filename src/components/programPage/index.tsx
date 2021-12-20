@@ -60,7 +60,7 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
 
   return (
     <div style={{ flex: 1, flexDirection: "column" }}>
-      <Header title="Demo Streaming" />
+      <Header title="DEMO Streaming" />
       <SubHeader info="Titles" />
       <div style={{ flex: 1, flexDirection: "column", minHeight: "100vh" }}>
         { !loading && <FilterWrapper><Searchbar onSearch={onSearch} /></FilterWrapper> }
