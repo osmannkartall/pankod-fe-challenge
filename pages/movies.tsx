@@ -1,27 +1,50 @@
 import React, { useEffect } from "react";
 import { Header, SubHeader, FilterWrapper, Footer, ProgramCards, Searchbar } from "@components";
-import { useStore } from "src/store";
-import { getPrograms, searchPrograms } from "src/services/programsService";
+import { useProgramsDB, useStore } from "src/store";
+import { searchPrograms } from "src/services/programsService";
+import { Button } from "antd";
+import { filterByAttribute } from "src/utils";
 
 const Movies: React.FC = () => {
-  const { setPrograms } = useStore();
+  const {
+    programs,
+    setPrograms,
+    page,
+    setPage,
+    loading,
+    setLoading,
+    error,
+    setError,
+    hasMore,
+    setHasMore,
+  } = useStore();
+
+  const { programsDB } = useProgramsDB();
+
+  const fetchMovies = async () => {
+    try {
+      const { hasMoreEntries, entries } = await filterByAttribute(programsDB, "programType", "movie", page);
+      
+      setPrograms([...programs, ...entries]);
+      setPage(page + 1);
+      setHasMore(hasMoreEntries);
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const simulateFetch = async () => {
+    if (hasMore) {
+      setLoading(true);
+      setTimeout(fetchMovies, 1000);
+    }
+  }
 
   useEffect(() => {
-    let mounted = true;
-    
-    const fetchMovies = async () => {
-      const movies = await getPrograms("movie");
-
-      if (mounted && Array.isArray(movies)) {
-        setPrograms(movies);
-      }
-    }
-
-    fetchMovies();
-
-    return () => {
-      mounted = false;
-    }
+    simulateFetch();
   }, [])
 
   const onSearch = async (searchText: string) => {
@@ -35,15 +58,41 @@ const Movies: React.FC = () => {
   }
 
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
-    >
+    <div style={{ flex: 1, flexDirection: "column" }}>
       <Header title="Demo Streaming" />
       <SubHeader info="Titles" />
-      <FilterWrapper>
-        <Searchbar onSearch={onSearch} />
-      </FilterWrapper>
-      <ProgramCards />
+      <div style={{ flex: 1, flexDirection: "column", minHeight: "100vh" }}>
+        { !loading && <FilterWrapper><Searchbar onSearch={onSearch} /></FilterWrapper> }
+        { programs?.length ? <ProgramCards /> : null }
+        { loading && <div style={{ fontSize: 20, padding: "40px 200px" }}>Loading...</div> }
+        { 
+          error && (
+            <div style={{ fontSize: 20, padding: "40px 200px" }}>Oops, something went wrong...</div>
+          )
+        }
+        {
+          hasMore && programs?.length && !loading ? (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                marginBottom: 50,
+              }}
+            >
+              <Button type="primary" onClick={simulateFetch} style={{ width: 150 }}>
+                Load More
+              </Button>
+            </div>
+          ) : null
+        }
+        {
+          !hasMore && !programs?.length ? (
+            <div style={{ fontSize: 20, padding: "40px 200px" }}>No program found...</div>
+          ) : null
+        }
+      </div>
+
       <Footer />
     </div>
   );

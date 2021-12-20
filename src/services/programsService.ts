@@ -1,4 +1,5 @@
-import { filterByAttribute, filterBySearch } from "src/utils";
+import { Program } from "src/models/Program";
+import { filterBySearch } from "src/utils";
 
 const programsPath = 'mock/sample.json';
 
@@ -7,16 +8,12 @@ const headers = {
   'Accept': 'application/json'
 };
 
-export const getPrograms = async (programType: string) => {
+export const getAllPrograms = async () => {
   try {
     const response = await fetch(programsPath, { headers })
-    const programs = await response.json();      
+    const programs = await response.json();
 
-    if (Array.isArray(programs?.entries)) {
-      return filterByAttribute(programs.entries, "programType", programType);
-    }
-
-    throw Error("An error occured");
+    return programs.entries.filter((program: Program) => program.releaseYear >= 2010);
   } catch (err) {
     console.error(new Date().toLocaleString(), err);
   }
