@@ -4,7 +4,7 @@ import { useProgramsDB, useProgramsPageStore } from "src/store";
 import { Button } from "antd";
 import { Program } from "src/models/Program";
 
-const numElementInPage = 7;
+const numEntriesInPage = 7;
 
 const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programType })  => {
   const {
@@ -28,7 +28,7 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
   const [startToSearch, setStartToSearch] = useState(false);
 
   const filterPrograms = () : { hasMoreEntries: boolean, entries: Program[] } => {
-    if (page < 1 || numElementInPage < 1) {
+    if (page < 1 || numEntriesInPage < 1) {
       throw new Error("Current page number and numbber of entries in a page should be positive.");
     }
 
@@ -40,10 +40,10 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
     );
 
     const isSearchResultEmpty = searchText && !entries.length;
-    const hasMoreEntries = page * numElementInPage <= entries.length && !isSearchResultEmpty;
+    const hasMoreEntries = page * numEntriesInPage <= entries.length && !isSearchResultEmpty;
 
-    const start = (page - 1) * numElementInPage;
-    const end = hasMoreEntries ? page * numElementInPage % entries.length : entries.length;
+    const start = (page - 1) * numEntriesInPage;
+    const end = hasMoreEntries ? page * numEntriesInPage % entries.length : entries.length;
 
     return {
       hasMoreEntries,
