@@ -1,7 +1,7 @@
 import React from "react";
 import { ProgramFilterOptions } from "@models";
 import { useProgramsPageStore } from "@stores";
-import { sortByAttribute } from "src/utils";
+import { sortByAttribute } from "utils";
 import { ProgramFilterSelect } from "..";
 
 const options: ProgramFilterOptions = {
