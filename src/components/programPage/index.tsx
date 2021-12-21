@@ -74,28 +74,48 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
   }
 
   const simulateFetch = () => {
+    let timeoutId;
+
     if (hasMore) {
       setLoading(true);
-      setTimeout(fetchPrograms, 1000);
+      timeoutId = setTimeout(fetchPrograms, 1000);
     }
+
+    return timeoutId;
   }
 
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
     const getFirstProgramsOnLoad = () => {
-      simulateFetch();
+      timeoutId = simulateFetch();
     }
 
     getFirstProgramsOnLoad();
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    }
   }, [])
 
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
     const getSearchResults = () => {
       if (hasMore && startToSearch) {
-        simulateFetch();
+        timeoutId = simulateFetch();
       }
     }
 
     getSearchResults();
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    }
   }, [startToSearch, hasMore])
 
   const onSearch = (searchText: string) => {
