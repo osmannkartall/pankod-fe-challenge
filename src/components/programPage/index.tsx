@@ -28,6 +28,10 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
   const [startToSearch, setStartToSearch] = useState(false);
 
   const filterPrograms = () : { hasMoreEntries: boolean, entries: Program[] } => {
+    if (page < 1 || numElementInPage < 1) {
+      throw new Error("Current page number and numbber of entries in a page should be positive.");
+    }
+
     const entries = programsDB.filter(
       (item: Program) => (
         item.programType === programType
