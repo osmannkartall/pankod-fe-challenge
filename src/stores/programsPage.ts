@@ -1,7 +1,5 @@
+import { Program } from "@models";
 import create from "zustand";
-import { Program } from "./models/Program";
-import { persist } from "zustand/middleware"
-import { getAllPrograms } from "./services/programsService";
 
 const programsPageInitialState = {
   programs: [],
@@ -60,24 +58,4 @@ export const useProgramsPageStore = create<ProgramsPageState>(
       }),
     ),
   }),
-);
-
-interface ProgramsDBState {
-  programsDB: Program[];
-  createProgramsDB: () => void;
-};
-
-export const useProgramsDB = create<ProgramsDBState>(
-  persist(
-    (set, _) => ({
-      programsDB: [],
-      createProgramsDB: async () => {
-        const programs = await getAllPrograms();
-        set({ programsDB: programs });
-      }
-    }),
-    {
-      name: "programs-db",
-    }
-  )
 );

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Header, SubHeader, Footer, TileCards } from "@components";
-import { useProgramsPageStore } from "src/store";
+import { useProgramsPageStore } from "@stores";
 
 const Home: React.FC = () => {
   const { reset } = useProgramsPageStore();

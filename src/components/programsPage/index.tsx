@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Header, SubHeader, FilterWrapper, Footer, ProgramCards, Searchbar } from "@components";
-import { useProgramsDB, useProgramsPageStore } from "src/store";
+import { useProgramsPageStore, useProgramsDB } from "@stores";
+
 import { Button } from "antd";
-import { Program } from "src/models/Program";
+import { Program } from "@models";
 
 const numEntriesInPage = 7;
 

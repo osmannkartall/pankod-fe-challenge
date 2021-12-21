@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import { ProgramCard, TileCard } from "@components";
-import { useProgramsPageStore } from "src/store";
+import { useProgramsPageStore } from "@stores";
 
 const streamItems = ["series", "movies"]
 

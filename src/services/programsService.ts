@@ -1,19 +1,21 @@
-import { Program } from "src/models/Program";
+import { Program } from "@models";
 
-const programsPath = 'mock/sample.json';
+export class ProgramsService {
+  private readonly headers = { 
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  };
 
-const headers = { 
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-};
+  private readonly programsPath = 'mock/sample.json';
 
-export const getAllPrograms = async () => {
-  try {
-    const response = await fetch(programsPath, { headers })
-    const programs = await response.json();
-
-    return programs.entries.filter((program: Program) => program.releaseYear >= 2010);
-  } catch (err) {
-    console.error(new Date().toLocaleString(), err);
-  }
-};
+  public getAllPrograms = async () => {
+    try {
+      const response = await fetch(this.programsPath, { headers: this.headers })
+      const programs = await response.json();
+  
+      return programs.entries.filter((program: Program) => program.releaseYear >= 2010);
+    } catch (err) {
+      console.error(new Date().toLocaleString(), err);
+    }
+  };
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Select as AntSelect } from 'antd';
-import { ProgramFilterOptions } from "src/models/ProgramFilterOptions";
+import { ProgramFilterOptions } from "@models";
 
 const { Option } = AntSelect;
 

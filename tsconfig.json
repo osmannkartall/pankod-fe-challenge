@@ -42,7 +42,25 @@
       ],
       "@test": [
         "test"
-      ]
+      ],
+      "@stores/*": [
+        "src/stores/*"
+      ],
+      "@stores": [
+        "src/stores"
+      ],
+      "@models/*": [
+        "src/models/*"
+      ],
+      "@models": [
+        "src/models"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@services": [
+        "src/services"
+      ],
     },
     "incremental": true
   },

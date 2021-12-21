@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { AppProps } from "next/app";
 import "antd/dist/antd.css";
 import "@styles/global.css";
-import { useProgramsDB } from "src/store";
+import { useProgramsDB } from "@stores";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const { programsDB, createProgramsDB } = useProgramsDB();
