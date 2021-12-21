@@ -60,7 +60,7 @@
       ],
       "@services": [
         "src/services"
-      ],
+      ]
     },
     "incremental": true
   },
