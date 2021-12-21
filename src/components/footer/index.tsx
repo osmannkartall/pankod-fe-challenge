@@ -45,15 +45,14 @@ const CopyRightText: React.FC = () => (
 const StoreLogoWrapper: React.FC = () => (
   <div
     style={{
-      flex: "0 1 auto",
+      display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: "red",
       height: 100
     }}
   >
-    <a href="#" style={{ marginRight: 20 }}>
+    <a href="#">
       <img
         src="/store/app-store.svg"
         alt="pankod-app-store.svg"
@@ -61,7 +60,7 @@ const StoreLogoWrapper: React.FC = () => (
         height="40"
       />
     </a>
-    <a href="#" style={{ marginRight: 20 }}>
+    <a href="#" style={{ marginLeft: 20 }}>
       <img
         src="/store/play-store.svg"
         alt="pankod-play-store.svg"
@@ -69,7 +68,7 @@ const StoreLogoWrapper: React.FC = () => (
         height="40"
       />
     </a>
-    <a href="#">
+    <a href="#" style={{ marginLeft: 20 }}>
       <img
         src="/store/windows-store.svg"
         alt="pankod-windows-store.svg"
@@ -93,7 +92,6 @@ const SocialLogoWrapper: React.FC = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "green",
         height: 100
       }}
     >
