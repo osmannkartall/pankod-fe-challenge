@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Header, SubHeader, FilterWrapper, Footer, ProgramCards, Searchbar } from "@components";
 import { useProgramsDB, useProgramsPageStore } from "src/store";
-import { searchPrograms } from "src/services/programsService";
 import { Button } from "antd";
-import { filterByAttribute } from "src/utils";
+import { Program } from "src/models/Program";
 
-// TODO: create enum for programType
+const numElementInPage = 7;
+
 const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programType })  => {
   const {
     programs,
@@ -18,26 +18,58 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
     setError,
     hasMore,
     setHasMore,
+    reset,
   } = useProgramsPageStore();
 
   const { programsDB } = useProgramsDB();
 
-  const fetchPrograms = async () => {
+  const [searchText, setSearchText] = useState("");
+
+  const [startToSearch, setStartToSearch] = useState(false);
+
+  const filterPrograms = () : { hasMoreEntries: boolean, entries: Program[] } => {
+    const entries = programsDB.filter(
+      (item: Program) => (
+        item.programType === programType
+          && (!searchText || item.title.toLowerCase().includes(searchText.toLowerCase()))
+      )
+    );
+
+    const isSearchResultEmpty = searchText && !entries.length;
+    const hasMoreEntries = page * numElementInPage <= entries.length && !isSearchResultEmpty;
+
+    const start = (page - 1) * numElementInPage;
+    const end = hasMoreEntries ? page * numElementInPage % entries.length : entries.length;
+
+    return {
+      hasMoreEntries,
+      entries: entries.sort((a, b) => a.title.localeCompare(b.title)).slice(start, end),
+    };
+  };
+
+  const fetchPrograms = () => {
     try {
-      const { hasMoreEntries, entries } = await filterByAttribute(programsDB, "programType", programType, page);
+      const { hasMoreEntries, entries } = filterPrograms();
+      const areEntriesInFirstPage = page === 1 && hasMore;
       
-      setPrograms([...programs, ...entries]);
+      if (areEntriesInFirstPage) {
+        setPrograms(entries);
+      } else {
+        setPrograms([...programs, ...entries]);
+      }
       setPage(page + 1);
       setHasMore(hasMoreEntries);
+
     } catch (err) {
       console.error(err);
       setError(true);
     } finally {
       setLoading(false);
+      setStartToSearch(false);
     }
   }
 
-  const simulateFetch = async () => {
+  const simulateFetch = () => {
     if (hasMore) {
       setLoading(true);
       setTimeout(fetchPrograms, 1000);
@@ -45,17 +77,27 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
   }
 
   useEffect(() => {
-    simulateFetch();
+    const getFirstProgramsOnLoad = () => {
+      simulateFetch();
+    }
+
+    getFirstProgramsOnLoad();
   }, [])
 
-  const onSearch = async (searchText: string) => {
-    if (searchText.length > 2) {
-      const results = await searchPrograms(programType, searchText);
-  
-      if (Array.isArray(results)) {
-        setPrograms(results);
+  useEffect(() => {
+    const getSearchResults = () => {
+      if (hasMore && startToSearch) {
+        simulateFetch();
       }
     }
+
+    getSearchResults();
+  }, [startToSearch, hasMore])
+
+  const onSearch = (searchText: string) => {
+    reset();
+    setStartToSearch(true);
+    setSearchText(searchText);
   }
 
   return (
@@ -63,7 +105,9 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
       <Header title="DEMO Streaming" />
       <SubHeader info="Titles" />
       <div style={{ flex: 1, flexDirection: "column", minHeight: "100vh" }}>
-        { !loading && <FilterWrapper><Searchbar onSearch={onSearch} /></FilterWrapper> }
+      <FilterWrapper>
+        <Searchbar onSearch={onSearch} />
+      </FilterWrapper>
         { programs?.length ? <ProgramCards /> : null }
         { loading && <div style={{ fontSize: 20, padding: "40px 200px" }}>Loading...</div> }
         { 
@@ -93,7 +137,6 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
           ) : null
         }
       </div>
-
       <Footer />
     </div>
   );
