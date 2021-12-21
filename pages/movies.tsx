@@ -1,6 +1,6 @@
 import React from "react";
-import ProgramPage from "@components/programPage";
+import ProgramsPage from "@components/programsPage";
 
-const Movies: React.FC = () => <ProgramPage programType="movie" />;
+const Movies: React.FC = () => <ProgramsPage programType="movie" />;
 
 export default Movies;

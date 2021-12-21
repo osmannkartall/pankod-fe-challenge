@@ -1,6 +1,6 @@
 import React from "react";
-import ProgramPage from "@components/programPage";
+import ProgramsPage from "@components/programsPage";
 
-const Series: React.FC = () => <ProgramPage programType="series" />;
+const Series: React.FC = () => <ProgramsPage programType="series" />;
 
 export default Series;

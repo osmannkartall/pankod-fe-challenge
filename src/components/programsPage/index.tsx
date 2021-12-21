@@ -6,7 +6,7 @@ import { Program } from "src/models/Program";
 
 const numEntriesInPage = 7;
 
-const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programType })  => {
+const ProgramsPage: React.FC<{ programType: "movie" | "series" }> = ({ programType })  => {
   const {
     programs,
     setPrograms,
@@ -166,4 +166,4 @@ const ProgramPage: React.FC<{ programType: "movie" | "series" }> = ({ programTyp
   );
 };
 
-export default ProgramPage;
+export default ProgramsPage;
