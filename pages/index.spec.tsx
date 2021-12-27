@@ -3,12 +3,17 @@ import React from "react";
 import Home from ".";
 import { TileCards, PageWrapper, TileCard } from "@components";
 import Title from "antd/lib/typography/Title";
+import { act } from "react-dom/test-utils";
 
 describe(`Testing Home Page...`, () => {
   let home: ReactWrapper;
 
   beforeEach(async () => {
     home = mount(<Home />);
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve));
+      home.update();
+    });
   });
 
   it("renders without crashing", () => {
