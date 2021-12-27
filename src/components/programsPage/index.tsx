@@ -40,7 +40,7 @@ const ProgramsPage: React.FC<{ programType: "movie" | "series" }> = ({ programTy
     );
 
     const isSearchResultEmpty = searchText && !entries.length;
-    const hasMoreEntries = page * numEntriesInPage <= entries.length && !isSearchResultEmpty;
+    const hasMoreEntries = page * numEntriesInPage < entries.length && !isSearchResultEmpty;
 
     const start = (page - 1) * numEntriesInPage;
     const end = hasMoreEntries ? page * numEntriesInPage % entries.length : entries.length;
