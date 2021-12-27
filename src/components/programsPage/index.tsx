@@ -79,7 +79,7 @@ const ProgramsPage: React.FC<{ programType: "movie" | "series" }> = ({ programTy
 
     if (hasMore) {
       setLoading(true);
-      timeoutId = setTimeout(fetchPrograms, 1000);
+      timeoutId = setTimeout(fetchPrograms, 100);
     }
 
     return timeoutId;
