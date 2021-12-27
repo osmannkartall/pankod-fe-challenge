@@ -1,12 +1,19 @@
 import React, { useEffect } from "react";
 import { Header, SubHeader, Footer, TileCards } from "@components";
-import { useProgramsPageStore } from "@stores";
+import { useProgramsDB, useProgramsPageStore } from "@stores";
 
 const Home: React.FC = () => {
   const { reset } = useProgramsPageStore();
+  const { programsDB, createProgramsDB } = useProgramsDB();
   
   useEffect(() => {
     reset();
+  }, [])
+  
+  useEffect(() => {
+    if (!programsDB.length) {
+      createProgramsDB();
+    }
   }, [])
 
   return (
