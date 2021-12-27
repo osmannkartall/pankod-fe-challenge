@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FilterWrapper, ProgramCards, Searchbar, PageWrapper } from "@components";
 import { useProgramsPageStore, useProgramsDB } from "@stores";
 import { Button } from "antd";
-import { Program } from "@models";
+import { Program, ProgramType } from "@models";
 
 const numEntriesInPage = 7;
 
-const ProgramsPage: React.FC<{ programType: "movie" | "series" }> = ({ programType })  => {
+const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  => {
   const {
     programs,
     setPrograms,

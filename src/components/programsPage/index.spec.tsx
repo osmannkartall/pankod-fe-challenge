@@ -4,6 +4,7 @@ import ProgramsPage from "."
 import { FilterWrapper, ProgramCard, ProgramCards, Searchbar } from "..";
 import { act } from "react-dom/test-utils";
 import Home from "../../../pages";
+import { ProgramType } from "@models/ProgramType";
 
 const simulateAsyncEvent = async (component: ReactWrapper, ms: number = 0) => {
   await act(async () => {
@@ -12,7 +13,7 @@ const simulateAsyncEvent = async (component: ReactWrapper, ms: number = 0) => {
   });
 };
 
-const runDescribeBlock = (programType: "series" | "movie") => {
+const runDescribeBlock = (programType: ProgramType) => {
   describe(`Testing ProgramsPage component...`, () => {
     let home: ReactWrapper;
     let programsPage: ReactWrapper;
