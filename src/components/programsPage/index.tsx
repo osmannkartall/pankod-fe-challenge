@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Header, SubHeader, FilterWrapper, Footer, ProgramCards, Searchbar } from "@components";
+import { FilterWrapper, ProgramCards, Searchbar, PageWrapper } from "@components";
 import { useProgramsPageStore, useProgramsDB } from "@stores";
-
 import { Button } from "antd";
 import { Program } from "@models";
 
@@ -162,21 +161,16 @@ const ProgramsPage: React.FC<{ programType: "movie" | "series" }> = ({ programTy
   };
 
   return (
-    <div style={{ flex: 1, flexDirection: "column" }}>
-      <Header title="DEMO Streaming" />
-      <SubHeader info="Titles" />
-      <div style={{ flex: 1, flexDirection: "column", minHeight: "100vh" }}>
+    <PageWrapper>
       <FilterWrapper>
         <Searchbar onSearch={onSearch} />
       </FilterWrapper>
-        { programs?.length ? <ProgramCards /> : null }
-        { loading && <div style={{ fontSize: 20, padding: "40px 200px" }}>Loading...</div> }
-        <ErrorText />
-        <LoadMoreButton />
-        <NoProgramFoundText />
-      </div>
-      <Footer />
-    </div>
+      <NoProgramFoundText />
+      <ErrorText />
+      { programs?.length ? <ProgramCards /> : <div style={{ flex: 1, flexDirection: "column" }} /> }
+      { loading && <div style={{ fontSize: 20, padding: "40px 200px" }}>Loading...</div> }
+      <LoadMoreButton />
+    </PageWrapper>
   );
 };
 
