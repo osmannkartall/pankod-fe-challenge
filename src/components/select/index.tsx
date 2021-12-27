@@ -4,9 +4,8 @@ import { ProgramFilterOptions } from "@models";
 
 const { Option } = AntSelect;
 
-const cardWidth = 150;
+const cardWidth = 192;
 const numCardForAlignment = 2;
-const paddingForCard = 10;
 
 interface ProgramFilterSelectProps {
   options: ProgramFilterOptions;
@@ -19,9 +18,7 @@ export const ProgramFilterSelect: React.FC<ProgramFilterSelectProps> = (
   return (
     <AntSelect
       placeholder="Sort by"
-      style={{
-        width: cardWidth * numCardForAlignment + (numCardForAlignment - 1) * paddingForCard
-      }}
+      style={{ width: cardWidth * numCardForAlignment }}
       onChange={handleChange}
     >
       {

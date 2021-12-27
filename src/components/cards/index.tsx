@@ -38,11 +38,11 @@ export const ProgramCards: React.FC = () => {
         padding: "20px 200px",
       }}
     >
-      {(programs ?? []).map((program) => (
+      {(programs ?? []).map((program, i) => (
         <Col
           style={{
             marginBottom: 50,
-            paddingRight: 20,
+            paddingRight: (i + 1) % 7 === 0 ? 0 : `calc(calc(100% - ${7 * 192}px) / 6)`,
           }}
           key={program.title}
         >
