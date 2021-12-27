@@ -124,6 +124,42 @@ const ProgramsPage: React.FC<{ programType: "movie" | "series" }> = ({ programTy
     setStartToSearch(true);
     setSearchText(searchText);
   }
+  
+  const NoProgramFoundText = () => {
+    if (!hasMore && !programs?.length) {
+      return <div style={{ fontSize: 20, padding: "40px 200px" }}>No program found...</div>;
+    }
+
+    return null;
+  };
+
+  const ErrorText = () => {
+    if (error) {
+      return <div style={{ fontSize: 20, padding: "40px 200px" }}>Oops, something went wrong...</div>
+    }
+    return null;
+  }
+
+  const LoadMoreButton = () => {
+    if (hasMore && programs?.length && !loading) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            marginBottom: 50,
+          }}
+        >
+          <Button type="primary" onClick={simulateFetch} style={{ width: 150 }}>
+            Load More
+          </Button>
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <div style={{ flex: 1, flexDirection: "column" }}>
@@ -135,32 +171,9 @@ const ProgramsPage: React.FC<{ programType: "movie" | "series" }> = ({ programTy
       </FilterWrapper>
         { programs?.length ? <ProgramCards /> : null }
         { loading && <div style={{ fontSize: 20, padding: "40px 200px" }}>Loading...</div> }
-        { 
-          error && (
-            <div style={{ fontSize: 20, padding: "40px 200px" }}>Oops, something went wrong...</div>
-          )
-        }
-        {
-          hasMore && programs?.length && !loading ? (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                marginBottom: 50,
-              }}
-            >
-              <Button type="primary" onClick={simulateFetch} style={{ width: 150 }}>
-                Load More
-              </Button>
-            </div>
-          ) : null
-        }
-        {
-          !hasMore && !programs?.length ? (
-            <div style={{ fontSize: 20, padding: "40px 200px" }}>No program found...</div>
-          ) : null
-        }
+        <ErrorText />
+        <LoadMoreButton />
+        <NoProgramFoundText />
       </div>
       <Footer />
     </div>
