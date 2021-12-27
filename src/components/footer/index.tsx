@@ -4,6 +4,7 @@ import {
   FacebookOutlined,
   InstagramOutlined,
 } from "@ant-design/icons";
+import { GRAY2, WHITE } from "src/constants/colors";
 
 const footerLinks = [
   "Home",
@@ -21,7 +22,7 @@ const FooterLinks: React.FC = () => {
         (footerLinks ?? []).map((footerLink, index) => (
           <div style={{ display: "inline-block" }} key={footerLink}>
             <a
-              style={{ textDecoration: "none", color: "#fff" }}
+              style={{ textDecoration: "none", color: WHITE }}
               href="#"
             >
               {footerLink}
@@ -82,7 +83,7 @@ const StoreLogoWrapper: React.FC = () => (
 const SocialLogoWrapper: React.FC = () => {
   const iconStyle: CSSProperties = {
     fontSize: 35,
-    color: "#fff",
+    color: WHITE,
     marginRight: 20,
   };
 
@@ -124,8 +125,8 @@ export const Footer: React.FC = () => {
   return (
     <div
       style={{
-        backgroundColor: "#1E1E1E",
-        color: "#fff",
+        backgroundColor: GRAY2,
+        color: WHITE,
         padding: "32px 200px",
         fontSize: 13,
       }}

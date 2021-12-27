@@ -3,6 +3,7 @@ import { FilterWrapper, ProgramCards, Searchbar, PageWrapper } from "@components
 import { useProgramsPageStore, useProgramsDB } from "@stores";
 import { Button } from "antd";
 import { Program, ProgramType } from "@models";
+import { PRIMARY } from "src/constants/colors";
 
 const numEntriesInPage = 7;
 
@@ -150,7 +151,11 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
             marginBottom: 50,
           }}
         >
-          <Button type="primary" onClick={simulateFetch} style={{ width: 150 }}>
+          <Button
+            type="primary"
+            onClick={simulateFetch}
+            style={{ width: 150, backgroundColor: PRIMARY, borderColor: PRIMARY }}
+          >
             Load More
           </Button>
         </div>

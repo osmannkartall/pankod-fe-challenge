@@ -1,11 +1,12 @@
 import React from "react";
 import { Button } from 'antd';
+import { PRIMARY, GRAY1, WHITE } from "src/constants/colors";
 
 export const Header: React.FC<{ title: string }> = (props: { title: string }) => {
   return (
     <div
       style={{
-        backgroundColor: "#007AFF",
+        backgroundColor: PRIMARY,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -13,13 +14,13 @@ export const Header: React.FC<{ title: string }> = (props: { title: string }) =>
         paddingTop: 10
       }}
     >
-      <div style={{ fontSize: 40, color: "#fff" }}>{props.title}</div>
+      <div style={{ fontSize: 40, color: WHITE }}>{props.title}</div>
       <div>
         <Button
           type="link"
           size="large"
           style={{
-            color: "#fff",
+            color: WHITE,
             marginRight: 30
           }}>
           Log in
@@ -27,7 +28,7 @@ export const Header: React.FC<{ title: string }> = (props: { title: string }) =>
         <Button
           type="primary"
           size="large"
-          style={{backgroundColor: "#414141"}}
+          style={{backgroundColor: GRAY1}}
         >
           Start your free trial
         </Button>

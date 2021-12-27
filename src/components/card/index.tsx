@@ -2,6 +2,7 @@ import React from "react";
 import { Typography } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router'
+import { WHITE } from "src/constants/colors";
 
 const { Title, Text } = Typography;
 
@@ -36,7 +37,7 @@ export const TileCard: React.FC<{ title: string }> = ({ title }) => {
       >
         <PlayCircleOutlined
           style={{
-            color: "#fff",
+            color: WHITE,
             fontSize: 100,
             opacity: .2,
             position: "absolute",
@@ -45,7 +46,7 @@ export const TileCard: React.FC<{ title: string }> = ({ title }) => {
         />
         <Title
           style={{
-            color: "#fff",
+            color: WHITE,
             position: "absolute",
             zIndex: 0
             }}
