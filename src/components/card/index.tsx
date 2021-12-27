@@ -30,6 +30,7 @@ export const TileCard: React.FC<{ title: string }> = ({ title }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          cursor: "pointer",
         }}
         onClick={() => router.push(`/${title}`)}
       >
