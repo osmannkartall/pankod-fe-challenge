@@ -7,13 +7,24 @@ import { CARD_HEIGHT, CARD_WIDTH } from "src/constants/styles";
 
 const { Title, Text } = Typography;
 
+const cardTitleStyle: React.CSSProperties = {
+  marginTop: 20,
+  fontSize: 15,
+};
+
+const CardTitle: React.FC<{ title: string }> = ({ title }) => (
+  <div style={cardTitleStyle}>
+    <Text>{title}</Text>
+  </div>
+);
+
 export const ProgramCard: React.FC<{ title: string, imageUrl: string }> = ({ title, imageUrl }) => {
   return (
     <>
       <div>
         <img alt="example" width={CARD_WIDTH} height={CARD_HEIGHT} src={imageUrl} />
       </div>
-      <Text>{title}</Text>
+      <CardTitle title={title} />
     </>
   );
 };
@@ -55,7 +66,7 @@ export const TileCard: React.FC<{ title: string }> = ({ title }) => {
           {title?.toString().toUpperCase()}
         </Title>
       </div>
-      <Text>{`Popular ${title}`}</Text>
+      <CardTitle title={`Popular ${title}`} />
     </>
   );
 }
