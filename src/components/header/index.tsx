@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from 'antd';
 import { PRIMARY, GRAY1, WHITE } from "src/constants/colors";
+import { HORIZONTAL_PADDING } from "src/constants/styles";
 
 export const Header: React.FC<{ title: string }> = (props: { title: string }) => {
   return (
@@ -10,7 +11,7 @@ export const Header: React.FC<{ title: string }> = (props: { title: string }) =>
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "0px 200px",
+        padding: `0px ${HORIZONTAL_PADDING}px`,
         paddingTop: 10
       }}
     >

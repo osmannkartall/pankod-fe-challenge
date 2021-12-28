@@ -1,10 +1,10 @@
 import React from "react";
 import { Select as AntSelect } from 'antd';
 import { ProgramFilterOptions } from "@models";
+import { CARD_WIDTH } from "src/constants/styles";
 
 const { Option } = AntSelect;
 
-const cardWidth = 192;
 const numCardForAlignment = 2;
 
 interface ProgramFilterSelectProps {
@@ -18,7 +18,7 @@ export const ProgramFilterSelect: React.FC<ProgramFilterSelectProps> = (
   return (
     <AntSelect
       placeholder="Sort by"
-      style={{ width: cardWidth * numCardForAlignment }}
+      style={{ width: CARD_WIDTH * numCardForAlignment }}
       onChange={handleChange}
     >
       {

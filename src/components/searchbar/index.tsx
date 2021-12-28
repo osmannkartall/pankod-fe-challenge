@@ -1,8 +1,8 @@
 import React from "react";
 import { Input } from 'antd';
+import { CARD_WIDTH } from "src/constants/styles";
 const { Search } = Input;
 
-const cardWidth = 192;
 const numCardForAlignment = 2;
 
 interface Searchbar {
@@ -16,7 +16,7 @@ export const Searchbar: React.FC<Searchbar> = ({ onSearch }) => {
       allowClear
       enterButton
       onSearch={onSearch}
-      style={{ width: cardWidth * numCardForAlignment }}
+      style={{ width: CARD_WIDTH * numCardForAlignment }}
     />
   );
 };

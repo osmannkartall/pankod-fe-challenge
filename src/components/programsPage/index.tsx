@@ -4,8 +4,9 @@ import { useProgramsPageStore, useProgramsDB } from "@stores";
 import { Button } from "antd";
 import { Program, ProgramType } from "@models";
 import { PRIMARY } from "src/constants/colors";
+import { HORIZONTAL_PADDING } from "src/constants/styles";
 
-const numEntriesInPage = 7;
+export const numEntriesInPage = 7;
 
 const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  => {
   const {
@@ -127,7 +128,7 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
   
   const NoProgramFoundText = () => {
     if (!hasMore && !programs?.length) {
-      return <div style={{ fontSize: 20, padding: "40px 200px" }}>No program found...</div>;
+      return <div style={{ fontSize: 20, padding: `40px ${HORIZONTAL_PADDING}px` }}>No program found...</div>;
     }
 
     return null;
@@ -135,7 +136,7 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
 
   const ErrorText = () => {
     if (error) {
-      return <div style={{ fontSize: 20, padding: "40px 200px" }}>Oops, something went wrong...</div>
+      return <div style={{ fontSize: 20, padding: `40px ${HORIZONTAL_PADDING}px` }}>Oops, something went wrong...</div>
     }
     return null;
   }
@@ -173,7 +174,7 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
       <NoProgramFoundText />
       <ErrorText />
       { programs?.length ? <ProgramCards /> : <div style={{ flex: 1, flexDirection: "column" }} /> }
-      { loading && <div style={{ fontSize: 20, padding: "40px 200px" }}>Loading...</div> }
+      { loading && <div style={{ fontSize: 20, padding: `40px ${HORIZONTAL_PADDING}px` }}>Loading...</div> }
       <LoadMoreButton />
     </PageWrapper>
   );

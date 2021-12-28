@@ -3,6 +3,7 @@ import { Typography } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router'
 import { WHITE } from "src/constants/colors";
+import { CARD_HEIGHT, CARD_WIDTH } from "src/constants/styles";
 
 const { Title, Text } = Typography;
 
@@ -10,7 +11,7 @@ export const ProgramCard: React.FC<{ title: string, imageUrl: string }> = ({ tit
   return (
     <>
       <div>
-        <img alt="example" width="192" height= "250" src={imageUrl} />
+        <img alt="example" width={CARD_WIDTH} height={CARD_HEIGHT} src={imageUrl} />
       </div>
       <Text>{title}</Text>
     </>
@@ -25,8 +26,8 @@ export const TileCard: React.FC<{ title: string }> = ({ title }) => {
       <div
         style={{
           backgroundColor: "black",
-          width: 192,
-          height: 250,
+          width: CARD_WIDTH,
+          height: CARD_HEIGHT,
           textAlign: "center",
           display: "flex",
           justifyContent: "center",

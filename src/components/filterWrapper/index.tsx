@@ -3,6 +3,7 @@ import { ProgramFilterOptions } from "@models";
 import { useProgramsPageStore } from "@stores";
 import { sortByAttribute } from "utils";
 import { ProgramFilterSelect } from "..";
+import { HORIZONTAL_PADDING } from "src/constants/styles";
 
 const options: ProgramFilterOptions = {
   "yearDesc": {
@@ -44,7 +45,7 @@ export const FilterWrapper: React.FC = ({ children }) => {
       style={{
         display: "flex",
         justifyContent: "space-between",
-        padding: "20px 200px",
+        padding: `20px ${HORIZONTAL_PADDING}px`,
       }}
     >
       {children}

@@ -5,6 +5,7 @@ import {
   InstagramOutlined,
 } from "@ant-design/icons";
 import { GRAY2, WHITE } from "src/constants/colors";
+import { HORIZONTAL_PADDING } from "src/constants/styles";
 
 const footerLinks = [
   "Home",
@@ -127,7 +128,7 @@ export const Footer: React.FC = () => {
       style={{
         backgroundColor: GRAY2,
         color: WHITE,
-        padding: "32px 200px",
+        padding: `32px ${HORIZONTAL_PADDING}px`,
         fontSize: 13,
       }}
     >
