@@ -3,8 +3,8 @@ import { FilterWrapper, ProgramCards, Searchbar, PageWrapper } from "@components
 import { useProgramsPageStore, useProgramsDB } from "@stores";
 import { Button } from "antd";
 import { Program, ProgramType } from "@models";
-import { PRIMARY } from "src/constants/colors";
-import { HORIZONTAL_PADDING } from "src/constants/styles";
+import { PRIMARY } from "colors";
+import { HORIZONTAL_PADDING } from "styles";
 
 export const numEntriesInPage = 7;
 

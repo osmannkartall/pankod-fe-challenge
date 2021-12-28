@@ -1,6 +1,6 @@
 import React from "react";
 import { Input } from 'antd';
-import { CARD_WIDTH } from "src/constants/styles";
+import { CARD_WIDTH } from "styles";
 const { Search } = Input;
 
 const numCardForAlignment = 2;

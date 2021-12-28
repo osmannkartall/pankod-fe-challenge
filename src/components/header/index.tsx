@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from 'antd';
-import { GRAY1, WHITE } from "src/constants/colors";
-import { headerWrapperStyle } from "src/constants/styles";
+import { GRAY1, WHITE } from "colors";
+import { headerWrapperStyle } from "styles";
 
 export const Header: React.FC<{ title: string }> = (props: { title: string }) => {
   return (

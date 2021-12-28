@@ -1,7 +1,7 @@
 import React from "react";
 import { Select as AntSelect } from 'antd';
 import { ProgramFilterOptions } from "@models";
-import { CARD_WIDTH } from "src/constants/styles";
+import { CARD_WIDTH } from "styles";
 
 const { Option } = AntSelect;
 

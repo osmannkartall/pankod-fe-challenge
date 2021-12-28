@@ -4,8 +4,8 @@ import {
   FacebookOutlined,
   InstagramOutlined,
 } from "@ant-design/icons";
-import { GRAY2, WHITE } from "src/constants/colors";
-import { HORIZONTAL_PADDING } from "src/constants/styles";
+import { GRAY2, WHITE } from "colors";
+import { HORIZONTAL_PADDING } from "styles";
 
 const footerLinks = [
   "Home",

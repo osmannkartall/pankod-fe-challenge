@@ -2,8 +2,8 @@ import React from "react";
 import { Typography } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router'
-import { WHITE } from "src/constants/colors";
-import { CARD_HEIGHT, CARD_WIDTH } from "src/constants/styles";
+import { WHITE } from "colors";
+import { CARD_HEIGHT, CARD_WIDTH } from "styles";
 
 const { Title, Text } = Typography;
 

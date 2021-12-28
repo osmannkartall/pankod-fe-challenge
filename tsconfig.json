@@ -63,6 +63,12 @@
       ],
       "utils": [
         "src/utils"
+      ],
+      "colors": [
+        "src/constants/colors"
+      ],
+      "styles": [
+        "src/constants/styles"
       ]
     },
     "incremental": true

@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import { ProgramCard, TileCard } from "@components";
 import { useProgramsPageStore } from "@stores";
-import { CARD_WIDTH, HORIZONTAL_PADDING } from "src/constants/styles";
+import { CARD_WIDTH, HORIZONTAL_PADDING } from "styles";
 import { numEntriesInPage } from "@components/programsPage";
 
 const streamItems = ["series", "movies"]

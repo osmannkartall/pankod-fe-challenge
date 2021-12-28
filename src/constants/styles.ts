@@ -1,5 +1,5 @@
 import React from "react";
-import { PRIMARY, WHITE } from "./colors";
+import { PRIMARY, WHITE } from "colors";
 
 export const CARD_WIDTH = 192;
 

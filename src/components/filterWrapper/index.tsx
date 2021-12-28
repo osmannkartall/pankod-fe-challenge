@@ -3,7 +3,7 @@ import { ProgramFilterOptions } from "@models";
 import { useProgramsPageStore } from "@stores";
 import { sortByAttribute } from "utils";
 import { ProgramFilterSelect } from "..";
-import { HORIZONTAL_PADDING } from "src/constants/styles";
+import { HORIZONTAL_PADDING } from "styles";
 
 const options: ProgramFilterOptions = {
   "yearDesc": {
