@@ -10,7 +10,7 @@ const numCardForAlignment = 2;
 interface ProgramFilterSelectProps {
   options: ProgramFilterOptions;
   handleChange: (value: string) => void;
-};
+}
 
 export const ProgramFilterSelect: React.FC<ProgramFilterSelectProps> = (
   { options, handleChange }

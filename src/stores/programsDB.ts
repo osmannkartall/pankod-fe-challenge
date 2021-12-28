@@ -6,7 +6,7 @@ import { ProgramsService } from "@services";
 interface ProgramsDBState {
   programsDB: Program[];
   createProgramsDB: () => void;
-};
+}
 
 export const useProgramsDB = create<ProgramsDBState>(
   persist(

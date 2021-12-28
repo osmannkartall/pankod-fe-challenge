@@ -27,7 +27,7 @@ interface ProgramsPageState {
   setHasMore: (hasMore: boolean) => void;
 
   reset: () => void;
-};
+}
 
 export const useProgramsPageStore = create<ProgramsPageState>(
   set => ({

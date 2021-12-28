@@ -6,7 +6,7 @@ import { act } from "react-dom/test-utils";
 import Home from "../../../pages";
 import { ProgramType } from "@models/ProgramType";
 
-const simulateAsyncEvent = async (component: ReactWrapper, ms: number = 0) => {
+const simulateAsyncEvent = async (component: ReactWrapper, ms = 0) => {
   await act(async () => {
     await new Promise(resolve => setTimeout(resolve, ms));
     component.update();

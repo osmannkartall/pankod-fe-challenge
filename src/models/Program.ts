@@ -1,8 +1,4 @@
-export interface Program {
-  [key: string]: any;
-  title: string;
-  description: string;
-  programType: string;
+interface Image {
   images: {
     "Poster Art": {
       url: string,
@@ -10,5 +6,13 @@ export interface Program {
       height: number,
     }
   };
+}
+
+export interface Program {
+  [key: string]: string | number | Image;
+  title: string;
+  description: string;
+  programType: string;
+  images: Image;
   releaseYear: number;
-};
+}
