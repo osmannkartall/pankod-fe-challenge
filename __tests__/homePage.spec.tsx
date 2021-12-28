@@ -1,6 +1,6 @@
 import { mount, ReactWrapper } from "enzyme"
 import React from "react";
-import Home from ".";
+import Home from "../pages";
 import { TileCards, PageWrapper, TileCard } from "@components";
 import Title from "antd/lib/typography/Title";
 import { act } from "react-dom/test-utils";
