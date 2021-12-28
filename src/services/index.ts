@@ -1,1 +1,1 @@
-export { ProgramsService } from "./ProgramsService";
+export { ProgramsService } from "./programsService";
