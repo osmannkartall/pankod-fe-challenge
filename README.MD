@@ -2,6 +2,10 @@
 
 This project was generated with [superplate](https://github.com/pankod/superplate).
 
+## Deployment
+
+[See app deployed on Heroku](https://pankod-fe-osmannkartall.herokuapp.com/)
+
 ## Tech Stack
 
 - React with TypeScript
