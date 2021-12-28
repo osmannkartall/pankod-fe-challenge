@@ -47,7 +47,10 @@ export const ProgramCards: React.FC = () => {
           key={program.title}
         >
           <ProgramCard
-            title={`${program.title.substring(0, 20)}...`}
+            title={
+              program?.title?.length < 20
+                ? program.title
+                : `${program?.title?.substring(0, 20)}...`}
             imageUrl={program.images["Poster Art"].url}
           />
         </Col>
