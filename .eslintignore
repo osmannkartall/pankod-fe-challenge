@@ -8,3 +8,4 @@ node_modules
 !.env.example
 jest.config.js
 next.config.js
+.eslintrc.js

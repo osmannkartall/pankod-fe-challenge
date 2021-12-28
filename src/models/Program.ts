@@ -1,10 +1,8 @@
 interface Image {
-  images: {
-    "Poster Art": {
-      url: string,
-      width: number,
-      height: number,
-    }
+  "Poster Art": {
+    url: string,
+    width: number,
+    height: number,
   };
 }
 
