@@ -125,10 +125,15 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
     setStartToSearch(true);
     setSearchText(searchText);
   }
+
+  const messageTextStyle: React.CSSProperties = {
+    fontSize: 20,
+    padding: `40px ${HORIZONTAL_PADDING}px`,
+  };
   
   const NoProgramFoundText = () => {
     if (!hasMore && !programs?.length) {
-      return <div style={{ fontSize: 20, padding: `40px ${HORIZONTAL_PADDING}px` }}>No program found...</div>;
+      return <div style={messageTextStyle}>No program found...</div>;
     }
 
     return null;
@@ -136,7 +141,7 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
 
   const ErrorText = () => {
     if (error) {
-      return <div style={{ fontSize: 20, padding: `40px ${HORIZONTAL_PADDING}px` }}>Oops, something went wrong...</div>
+      return <div style={messageTextStyle}>Oops, something went wrong...</div>
     }
     return null;
   }
@@ -174,7 +179,7 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
       <NoProgramFoundText />
       <ErrorText />
       { programs?.length ? <ProgramCards /> : <div style={{ flex: 1, flexDirection: "column" }} /> }
-      { loading && <div style={{ fontSize: 20, padding: `40px ${HORIZONTAL_PADDING}px` }}>Loading...</div> }
+      { loading && <div style={messageTextStyle}>Loading...</div> }
       <LoadMoreButton />
     </PageWrapper>
   );

@@ -22,15 +22,8 @@ const FooterLinks: React.FC = () => {
       {
         (footerLinks ?? []).map((footerLink, index) => (
           <div style={{ display: "inline-block" }} key={footerLink}>
-            <a
-              style={{ textDecoration: "none", color: WHITE }}
-              href="#"
-            >
-              {footerLink}
-            </a>
-            {
-              index !== footerLinks?.length - 1 && <span style={{ padding: "0px 12px", }}>|</span>
-            }
+            <a style={{ textDecoration: "none", color: WHITE }} href="#">{footerLink}</a>
+            { index !== footerLinks?.length - 1 && <span style={{ padding: "0px 12px", }}>|</span> }
           </div>
         ))
       }
@@ -44,16 +37,15 @@ const CopyRightText: React.FC = () => (
   </div>
 );
 
+const logoWrapperStyle: React.CSSProperties = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  height: 100
+};
+
 const StoreLogoWrapper: React.FC = () => (
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      height: 100
-    }}
-  >
+  <div style={logoWrapperStyle}>
     <a href="#">
       <img
         src="/store/app-store.svg"
@@ -89,14 +81,7 @@ const SocialLogoWrapper: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        height: 100
-      }}
-    >
+    <div style={logoWrapperStyle}>
       <a
         href="https://twitter.com/PankodDev"
         target="_blank"
@@ -134,7 +119,7 @@ export const Footer: React.FC = () => {
     >
       <FooterLinks />
       <CopyRightText />
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={logoWrapperStyle}>
         <SocialLogoWrapper />
         <StoreLogoWrapper />
       </div>

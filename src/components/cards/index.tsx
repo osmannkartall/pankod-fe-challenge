@@ -7,19 +7,19 @@ import { numEntriesInPage } from "@components/programsPage";
 
 const streamItems = ["series", "movies"]
 
+const cardsRowStyle: React.CSSProperties = {
+  flex: 1,
+  padding: `20px ${HORIZONTAL_PADDING}px`,
+};
+
 export const TileCards: React.FC = () => {
   return (
-    <Row
-      style={{
-        flex: 1,
-        padding: `20px ${HORIZONTAL_PADDING}px`,
-      }}
-    >
+    <Row style={cardsRowStyle}>
       {(streamItems ?? []).map((streamItem) => (
         <Col
           style={{
-            marginBottom: 30,
-            paddingRight: 20,
+            margin: "40px 0px",
+            paddingRight: `calc(calc(100% - ${numEntriesInPage * CARD_WIDTH}px) / ${numEntriesInPage - 1})`,
           }}
           key={streamItem}
         >
@@ -34,12 +34,7 @@ export const ProgramCards: React.FC = () => {
   const { programs } = useProgramsPageStore();
 
   return (
-    <Row
-      style={{
-        flex: 1,
-        padding: `20px ${HORIZONTAL_PADDING}px`,
-      }}
-    >
+    <Row style={cardsRowStyle}>
       {(programs ?? []).map((program, i) => (
         <Col
           style={{
