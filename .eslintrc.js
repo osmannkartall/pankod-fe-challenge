@@ -1,9 +1,6 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  "env": {
-    "jest/globals": true
-  },
   plugins: [
     '@typescript-eslint',
     'jest',
@@ -30,14 +27,6 @@ module.exports = {
   parserOptions: {
     "ecmaFeatures": {
       "jsx": true
-    }
-  },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        moduleDirectory: ['node_modules', 'src/'],
-      }
     }
   },
 };
