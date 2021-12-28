@@ -46,7 +46,7 @@ const logoWrapperStyle: React.CSSProperties = {
 
 const StoreLogoWrapper: React.FC = () => (
   <div style={logoWrapperStyle}>
-    <a href="#">
+    <a href="#" rel="noreferrer">
       <img
         src="/store/app-store.svg"
         alt="pankod-app-store.svg"
@@ -54,7 +54,7 @@ const StoreLogoWrapper: React.FC = () => (
         height="40"
       />
     </a>
-    <a href="#" style={{ marginLeft: 20 }}>
+    <a href="#" style={{ marginLeft: 20 }} rel="noreferrer">
       <img
         src="/store/play-store.svg"
         alt="pankod-play-store.svg"
@@ -62,7 +62,7 @@ const StoreLogoWrapper: React.FC = () => (
         height="40"
       />
     </a>
-    <a href="#" style={{ marginLeft: 20 }}>
+    <a href="#" style={{ marginLeft: 20 }} rel="noreferrer">
       <img
         src="/store/windows-store.svg"
         alt="pankod-windows-store.svg"
@@ -86,6 +86,7 @@ const SocialLogoWrapper: React.FC = () => {
         href="https://twitter.com/PankodDev"
         target="_blank"
         style={iconStyle}
+        rel="noreferrer"
       >
         <FacebookOutlined />
       </a>
@@ -93,6 +94,7 @@ const SocialLogoWrapper: React.FC = () => {
         href="https://twitter.com/PankodDev"
         target="_blank"
         style={iconStyle}
+        rel="noreferrer"
       >
         <TwitterOutlined />
       </a>
@@ -100,6 +102,7 @@ const SocialLogoWrapper: React.FC = () => {
         href="https://twitter.com/PankodDev"
         target="_blank"
         style={iconStyle}
+        rel="noreferrer"
       >
         <InstagramOutlined />
       </a>
