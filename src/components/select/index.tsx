@@ -9,7 +9,7 @@ interface ProgramFilterSelectProps {
   handleChange: (value: string) => void;
 }
 
-const SelectStyle: typeof Select = styled(Select)`
+const SelectWrapper: typeof Select = styled(Select)`
   flex: calc(200% / 7 - ${CARD_PADDING}px);
   max-width: calc(200% / 7 - ${CARD_PADDING}px);
 
@@ -33,12 +33,12 @@ export const ProgramFilterSelect: React.FC<ProgramFilterSelectProps> = (
   { options, handleChange }
 ) => {
   return (
-    <SelectStyle placeholder="Sort by" onChange={handleChange}>
+    <SelectWrapper placeholder="Sort by" onChange={handleChange}>
       {
         Object.entries(options).map(([optionKey, optionValue]) => (
           <Select.Option key={optionKey} value={optionKey}>{optionValue.title}</Select.Option>
         ))
       }
-    </SelectStyle>
+    </SelectWrapper>
   );
 };

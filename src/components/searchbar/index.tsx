@@ -8,7 +8,7 @@ interface Searchbar {
   onSearch: (value: string) => void;
 }
 
-const SearchbarStyle = styled(Search)`
+const SearchbarWrapper = styled(Search)`
   flex: calc(200% / 7 - ${CARD_PADDING}px);
   max-width: calc(200% / 7 - ${CARD_PADDING}px);
 
@@ -30,7 +30,7 @@ const SearchbarStyle = styled(Search)`
 
 export const Searchbar: React.FC<Searchbar> = ({ onSearch }) => {
   return (
-    <SearchbarStyle
+    <SearchbarWrapper
       placeholder="Search..."
       allowClear
       enterButton
