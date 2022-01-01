@@ -12,17 +12,17 @@ const SearchbarWrapper = styled(Search)`
   flex: calc(200% / 7 - ${CARD_PADDING}px);
   max-width: calc(200% / 7 - ${CARD_PADDING}px);
 
-  @media (width < ${BREAKPOINTS.md}) {
+  @media (max-width: ${BREAKPOINTS.md}) {
     flex: calc(200% / 6 - ${CARD_PADDING}px);
     max-width: calc(200% / 6 - ${CARD_PADDING}px);
   }
 
-  @media (width < ${BREAKPOINTS.sm}) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     flex: calc(100% / 3 - ${CARD_PADDING}px);
     max-width: calc(100% / 3 - ${CARD_PADDING}px);
   }
 
-  @media (width < ${BREAKPOINTS.xs}) {
+  @media (max-width: ${BREAKPOINTS.xs}) {
     flex: calc(100% / 2 - ${CARD_PADDING}px);
     max-width: calc(100% / 2 - ${CARD_PADDING}px);
   }

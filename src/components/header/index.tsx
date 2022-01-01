@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { ColorWrapper, HeaderTitle, HeaderWrapper } from "@styles/shared-styled-components";
 
 const HeaderButtonsWrapper = styled.div`
-  @media (width < 768px) {
+  @media (max-width: 768px) {
     margin: 16px 0;
   }
 `;

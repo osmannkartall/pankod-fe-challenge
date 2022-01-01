@@ -125,7 +125,7 @@ const LogosWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (width < 768px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `;

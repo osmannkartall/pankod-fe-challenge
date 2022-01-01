@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.div<{ backgroundColor: string }>`
   background-color: ${props => props.backgroundColor};
   justify-content: space-between;
 
-  @media (width < ${BREAKPOINTS.sm}) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     flex-direction: column;
     padding: 16px 0;
   }

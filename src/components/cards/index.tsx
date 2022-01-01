@@ -17,17 +17,17 @@ const ProgramCardsWrapper = styled(Col)`
   max-width: calc(100% / 7);
   padding: 40px ${CARD_PADDING}px;
 
-  @media (width < ${BREAKPOINTS.md}) {
+  @media (max-width: ${BREAKPOINTS.md}) {
     flex: calc(100% / 6);
     max-width: calc(100% / 6);
   }
 
-  @media (width < ${BREAKPOINTS.sm}) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     flex: calc(100% / 3);
     max-width: calc(100% / 3);
   }
 
-  @media (width < ${BREAKPOINTS.xs}) {
+  @media (max-width: ${BREAKPOINTS.xs}) {
     flex: calc(100% / 2);
     max-width: calc(100% / 2);
   }
@@ -38,22 +38,22 @@ const TileCardsWrapper = styled(Col)`
   max-width: calc(100% / 7);
   padding: 40px ${CARD_PADDING}px;
 
-  @media (width < ${BREAKPOINTS.lg}) {
+  @media (max-width: ${BREAKPOINTS.lg}) {
     flex: calc(100% / 6);
     max-width: calc(100% / 6);
   }
 
-  @media (width < ${BREAKPOINTS.md}) {
+  @media (max-width: ${BREAKPOINTS.md}) {
     flex: calc(100% / 5);
     max-width: calc(100% / 5);
   }
 
-  @media (width < ${BREAKPOINTS.sm}) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     flex: calc(100% / 3);
     max-width: calc(100% / 3);
   }
 
-  @media (width < ${BREAKPOINTS.xs}) {
+  @media (max-width: ${BREAKPOINTS.xs}) {
     flex: calc(100% / 2);
     max-width: calc(100% / 2);
   }

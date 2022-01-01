@@ -10,15 +10,15 @@ interface Padder {
 const PadderWrapper = styled("div")<Padder>`
   padding: ${(props) =>  `${props.vertical}px ${props.horizontal}px`};
 
-  @media (width < ${BREAKPOINTS.lg}) {
+  @media (max-width: ${BREAKPOINTS.lg}) {
     padding: ${(props) => `${props.vertical}px ${props.horizontal ? props.horizontal - 120 : 0}px`};
   }
 
-  @media (width < ${BREAKPOINTS.md}) {
+  @media (max-width: ${BREAKPOINTS.md}) {
     padding: ${(props) => `${props.vertical}px ${props.horizontal ? props.horizontal - 160 : 0}px`};
   }
 
-  @media (width < ${BREAKPOINTS.sm}) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     padding: ${(props) => `${props.vertical}px ${props.horizontal ? props.horizontal - 180 : 0}px`};
   }
 `;
