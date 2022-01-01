@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import {
   TwitterOutlined,
   FacebookOutlined,
@@ -88,42 +88,37 @@ const StoreLogoWrapper: React.FC = () => (
   </LogoWrapper>
 )
 
-const SocialLogoWrapper: React.FC = () => {
-  const iconStyle: CSSProperties = {
-    fontSize: 35,
-    color: WHITE,
-    marginRight: 20,
-  };
+const IconWrapper = styled.a`
+  font-size: 35px;
+  color: WHITE;
+  margin-right: 20px;
+`;
 
-  return (
-    <LogoWrapper>
-      <a
-        href="https://twitter.com/PankodDev"
-        target="_blank"
-        style={iconStyle}
-        rel="noreferrer"
-      >
-        <FacebookOutlined />
-      </a>
-      <a
-        href="https://twitter.com/PankodDev"
-        target="_blank"
-        style={iconStyle}
-        rel="noreferrer"
-      >
-        <TwitterOutlined />
-      </a>
-      <a
-        href="https://twitter.com/PankodDev"
-        target="_blank"
-        style={iconStyle}
-        rel="noreferrer"
-      >
-        <InstagramOutlined />
-      </a>
-    </LogoWrapper>
-  );
-};
+const SocialLogoWrapper: React.FC = () => (
+  <LogoWrapper>
+    <IconWrapper
+      href="https://twitter.com/PankodDev"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <FacebookOutlined />
+    </IconWrapper>
+    <IconWrapper
+      href="https://twitter.com/PankodDev"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <TwitterOutlined />
+    </IconWrapper>
+    <IconWrapper
+      href="https://twitter.com/PankodDev"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <InstagramOutlined />
+    </IconWrapper>
+  </LogoWrapper>
+);
 
 const LogosWrapper = styled.div`
   display: flex;

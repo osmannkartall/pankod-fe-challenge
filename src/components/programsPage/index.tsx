@@ -1,14 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { FilterWrapper, ProgramCards, Searchbar, PageWrapper, Padder, FetchResult } from "@components";
+import {
+  FilterWrapper,
+  ProgramCards,
+  Searchbar,
+  PageWrapper,
+  Padder,
+  FetchResult,
+} from "@components";
 import { useProgramsPageStore, useProgramsDB } from "@stores";
 import { Button } from "antd";
 import { Program, ProgramType } from "@models";
 import { PRIMARY } from "colors";
 import { FlexColumn } from "@styles/shared-styled-components";
+import styled from "styled-components";
 
 const numEntriesInPage = 7;
 
 const FlexWrapper: React.FC = ({ children }) => <FlexColumn>{children}</FlexColumn>;
+
+const ButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 50px;
+`;
+
+const ButtonWrapper = styled(Button)`
+  width: 150px;
+  background-color: ${PRIMARY};
+  border-color: ${PRIMARY};
+`;
 
 const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  => {
   const {
@@ -128,7 +149,6 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
     setSearchText(searchText);
   }
 
-  
   const NoProgramFoundText = () => {
     if (!hasMore && !programs?.length) {
       return <Padder><FetchResult>No program found...</FetchResult></Padder>;
@@ -147,22 +167,11 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
   const LoadMoreButton = () => {
     if (hasMore && programs?.length && !loading) {
       return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            marginBottom: 50,
-          }}
-        >
-          <Button
-            type="primary"
-            onClick={simulateFetch}
-            style={{ width: 150, backgroundColor: PRIMARY, borderColor: PRIMARY }}
-          >
+        <ButtonRow>
+          <ButtonWrapper type="primary" onClick={simulateFetch}>
             Load More
-          </Button>
-        </div>
+          </ButtonWrapper>
+        </ButtonRow>
       );
     }
 
@@ -176,7 +185,7 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
       </FilterWrapper>
       <NoProgramFoundText />
       <ErrorText />
-      { !programs?.length && loading ? <Padder><FetchResult>Loading...</FetchResult></Padder> : null}
+      { !programs?.length && loading ? <Padder><FetchResult>Loading...</FetchResult></Padder> : null }
       { programs?.length ? <FlexWrapper><ProgramCards /></FlexWrapper> : <FlexWrapper /> }
       <LoadMoreButton />
     </PageWrapper>
