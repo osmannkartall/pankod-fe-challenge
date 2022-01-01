@@ -4,9 +4,10 @@ import { GRAY1, PRIMARY, WHITE } from "colors";
 import { Padder } from "@components";
 import styled from "styled-components";
 import { ColorWrapper, HeaderTitle, HeaderWrapper } from "@styles/shared-styled-components";
+import { BREAKPOINTS } from "styles";
 
 const HeaderButtonsWrapper = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     margin: 16px 0;
   }
 `;

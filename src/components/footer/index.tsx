@@ -7,6 +7,7 @@ import {
 import { GRAY2, WHITE } from "colors";
 import { Padder } from "@components";
 import styled from "styled-components";
+import { BREAKPOINTS } from "styles";
 
 const footerLinks = [
   "Home",
@@ -125,7 +126,7 @@ const LogosWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     flex-direction: column;
   }
 `;
