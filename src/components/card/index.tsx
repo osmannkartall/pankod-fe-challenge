@@ -3,9 +3,11 @@ import { Typography } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router'
 import { WHITE } from "colors";
-import { CARD_HEIGHT, CARD_WIDTH } from "styles";
 
 const { Title, Text } = Typography;
+
+const CARD_WIDTH = 192;
+const CARD_HEIGHT = 250;
 
 const cardTitleStyle: React.CSSProperties = {
   marginTop: 20,
@@ -22,7 +24,7 @@ export const ProgramCard: React.FC<{ title: string, imageUrl: string }> = ({ tit
   return (
     <>
       <div>
-        <img alt="example" width={CARD_WIDTH} height={CARD_HEIGHT} src={imageUrl} />
+        <img alt="example" style={{ width: "100%" }} src={imageUrl} />
       </div>
       <CardTitle title={title} />
     </>

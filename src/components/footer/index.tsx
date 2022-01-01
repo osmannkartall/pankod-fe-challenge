@@ -5,7 +5,8 @@ import {
   InstagramOutlined,
 } from "@ant-design/icons";
 import { GRAY2, WHITE } from "colors";
-import { HORIZONTAL_PADDING } from "styles";
+import { Padder } from "@components";
+import styled from "styled-components";
 
 const footerLinks = [
   "Home",
@@ -16,36 +17,50 @@ const footerLinks = [
   "Manage Account"
 ];
 
+const FooterDiv = styled.div`
+  opacity: 0.6;
+  margin-top: 10px;
+`;
+
+const FooterLinksList = styled.div`
+  display: inline-block;
+`;
+
+const FooterLink = styled.a`
+  text-decoration: none;
+  color: ${WHITE};
+`;
+
 const FooterLinks: React.FC = () => {
   return (
-    <div style={{ opacity: 0.6 }}>
+    <FooterDiv>
       {
         (footerLinks ?? []).map((footerLink, index) => (
-          <div style={{ display: "inline-block" }} key={footerLink}>
-            <a style={{ textDecoration: "none", color: WHITE }} href="#">{footerLink}</a>
+          <FooterLinksList key={footerLink}>
+            <FooterLink href="#">{footerLink}</FooterLink>
             { index !== footerLinks?.length - 1 && <span style={{ padding: "0px 12px", }}>|</span> }
-          </div>
+          </FooterLinksList>
         ))
       }
-    </div>
+    </FooterDiv>
   );
 }
 
 const CopyRightText: React.FC = () => (
-  <div style={{ opacity: 0.6, marginTop: 10 }}>
+  <FooterDiv>
     Copyright © 2016 DEMO Streaming All Right Reserved.
-  </div>
+  </FooterDiv>
 );
 
-const logoWrapperStyle: React.CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  height: 100
-};
+const LogoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+`;
 
 const StoreLogoWrapper: React.FC = () => (
-  <div style={logoWrapperStyle}>
+  <LogoWrapper>
     <a href="#" rel="noreferrer">
       <img
         src="/store/app-store.svg"
@@ -70,7 +85,7 @@ const StoreLogoWrapper: React.FC = () => (
         height="40"
       />
     </a>
-  </div>
+  </LogoWrapper>
 )
 
 const SocialLogoWrapper: React.FC = () => {
@@ -81,7 +96,7 @@ const SocialLogoWrapper: React.FC = () => {
   };
 
   return (
-    <div style={logoWrapperStyle}>
+    <LogoWrapper>
       <a
         href="https://twitter.com/PankodDev"
         target="_blank"
@@ -106,26 +121,37 @@ const SocialLogoWrapper: React.FC = () => {
       >
         <InstagramOutlined />
       </a>
-    </div>
+    </LogoWrapper>
   );
 };
 
+const LogosWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (width < 768px) {
+    flex-direction: column;
+  }
+`;
+
+const FooterWrapper = styled.div`
+  background-color: ${GRAY2};
+  color: ${WHITE};
+  font-size: 13px;
+`;
+
 export const Footer: React.FC = () => {
   return (
-    <div
-      style={{
-        backgroundColor: GRAY2,
-        color: WHITE,
-        padding: `32px ${HORIZONTAL_PADDING}px`,
-        fontSize: 13,
-      }}
-    >
-      <FooterLinks />
-      <CopyRightText />
-      <div style={logoWrapperStyle}>
-        <SocialLogoWrapper />
-        <StoreLogoWrapper />
-      </div>
-    </div>
+    <FooterWrapper>
+      <Padder vertical={32}>
+        <FooterLinks />
+        <CopyRightText />
+        <LogosWrapper>
+          <SocialLogoWrapper />
+          <StoreLogoWrapper />
+        </LogosWrapper>
+      </Padder>
+    </FooterWrapper>
   );
 };

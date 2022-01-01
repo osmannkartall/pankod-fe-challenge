@@ -1,60 +1,75 @@
 import React from "react";
-import { Row, Col } from "antd";
-import { ProgramCard, TileCard } from "@components";
+import { Row as AntRow, Col } from "antd";
+import { Padder, FetchResult, ProgramCard, TileCard, CardsPadder } from "@components";
 import { useProgramsPageStore } from "@stores";
-import { CARD_WIDTH, HORIZONTAL_PADDING } from "styles";
-import { numEntriesInPage } from "@components/programsPage";
+import { BREAKPOINTS, CARD_PADDING, HORIZONTAL_PADDING } from "styles";
+import styled from "styled-components";
 
 const streamItems = ["series", "movies"]
 
-const cardsRowStyle: React.CSSProperties = {
-  flex: 1,
-  padding: `20px ${HORIZONTAL_PADDING}px`,
-};
+const Row = styled(AntRow)`
+  flex: 1;
+  flex-wrap: wrap;
+`;
+
+const CardWrapper = styled(Col)`
+  flex: calc(100% / 7);
+  max-width: calc(100% / 7);
+  padding: 40px ${CARD_PADDING}px;
+
+  @media (width < ${BREAKPOINTS.md}) {
+    flex: calc(100% / 6);
+    max-width: calc(100% / 6);
+  }
+
+  @media (width < ${BREAKPOINTS.sm}) {
+    flex: calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  @media (width < ${BREAKPOINTS.xs}) {
+    flex: calc(100% / 2);
+    max-width: calc(100% / 2);
+  }
+`;
 
 export const TileCards: React.FC = () => {
   return (
-    <Row style={cardsRowStyle}>
-      {(streamItems ?? []).map((streamItem) => (
-        <Col
-          style={{
-            margin: "40px 0px",
-            paddingRight: `calc(calc(100% - ${numEntriesInPage * CARD_WIDTH}px) / ${numEntriesInPage - 1})`,
-          }}
-          key={streamItem}
-        >
-          <TileCard title={streamItem} />
-        </Col>
-      ))} 
-    </Row>
+    <Padder horizontal={HORIZONTAL_PADDING - CARD_PADDING}>
+      <Row>
+        {(streamItems ?? []).map((streamItem) => (
+          <CardWrapper key={streamItem}>
+            <TileCard title={streamItem} />
+          </CardWrapper>
+        ))}
+      </Row>
+    </Padder>
   );
 };
 
 export const ProgramCards: React.FC = () => {
-  const { programs } = useProgramsPageStore();
+  const { loading, programs } = useProgramsPageStore();
 
   return (
-    <Row style={cardsRowStyle}>
-      {(programs ?? []).map((program, i) => (
-        <Col
-          style={{
-            marginBottom: 50,
-            paddingRight:
-              (i + 1) % numEntriesInPage === 0
-                ? 0
-                : `calc(calc(100% - ${numEntriesInPage * CARD_WIDTH}px) / ${numEntriesInPage - 1})`,
-          }}
-          key={program.title}
-        >
-          <ProgramCard
-            title={
-              program?.title?.length < 20
-                ? program.title
-                : `${program?.title?.substring(0, 20)}...`}
-            imageUrl={program.images["Poster Art"].url}
-          />
-        </Col>
-      ))} 
-    </Row>
+    <>
+      <CardsPadder horizontal={HORIZONTAL_PADDING - CARD_PADDING}>
+        <Row>
+          {(programs ?? []).map((program) => (
+            <CardWrapper key={program.title}>
+              <ProgramCard
+                title={
+                  program?.title?.length < 20
+                    ? program.title
+                    : `${program?.title?.substring(0, 20)}...`}
+                imageUrl={program.images["Poster Art"].url}
+              />
+            </CardWrapper>
+          ))}
+        </Row>
+      </CardsPadder>
+      <Padder>
+        { loading && <FetchResult>Loading...</FetchResult> }
+      </Padder>
+    </>
   );
 };

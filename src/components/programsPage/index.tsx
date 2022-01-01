@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { FilterWrapper, ProgramCards, Searchbar, PageWrapper } from "@components";
+import { FilterWrapper, ProgramCards, Searchbar, PageWrapper, Padder, FetchResult } from "@components";
 import { useProgramsPageStore, useProgramsDB } from "@stores";
 import { Button } from "antd";
 import { Program, ProgramType } from "@models";
 import { PRIMARY } from "colors";
-import { HORIZONTAL_PADDING } from "styles";
+import { FlexColumn } from "@styles/shared-styled-components";
 
-export const numEntriesInPage = 7;
+const numEntriesInPage = 7;
+
+const FlexWrapper: React.FC = ({ children }) => <FlexColumn>{children}</FlexColumn>;
 
 const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  => {
   const {
@@ -126,14 +128,10 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
     setSearchText(searchText);
   }
 
-  const messageTextStyle: React.CSSProperties = {
-    fontSize: 20,
-    padding: `40px ${HORIZONTAL_PADDING}px`,
-  };
   
   const NoProgramFoundText = () => {
     if (!hasMore && !programs?.length) {
-      return <div style={messageTextStyle}>No program found...</div>;
+      return <Padder><FetchResult>No program found...</FetchResult></Padder>;
     }
 
     return null;
@@ -141,7 +139,7 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
 
   const ErrorText = () => {
     if (error) {
-      return <div style={messageTextStyle}>Oops, something went wrong...</div>
+      return <Padder><FetchResult>Oops, something went wrong...</FetchResult></Padder>
     }
     return null;
   }
@@ -178,8 +176,8 @@ const ProgramsPage: React.FC<{ programType: ProgramType }> = ({ programType })  
       </FilterWrapper>
       <NoProgramFoundText />
       <ErrorText />
-      { programs?.length ? <ProgramCards /> : <div style={{ flex: 1, flexDirection: "column" }} /> }
-      { loading && <div style={messageTextStyle}>Loading...</div> }
+      { !programs?.length && loading ? <Padder><FetchResult>Loading...</FetchResult></Padder> : null}
+      { programs?.length ? <FlexWrapper><ProgramCards /></FlexWrapper> : <FlexWrapper /> }
       <LoadMoreButton />
     </PageWrapper>
   );

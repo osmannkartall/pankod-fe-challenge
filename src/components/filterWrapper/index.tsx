@@ -2,8 +2,7 @@ import React from "react";
 import { ProgramFilterOptions } from "@models";
 import { useProgramsPageStore } from "@stores";
 import { sortByAttribute } from "utils";
-import { ProgramFilterSelect } from "..";
-import { HORIZONTAL_PADDING } from "styles";
+import { Padder, ProgramFilterSelect } from "..";
 
 const options: ProgramFilterOptions = {
   "yearDesc": {
@@ -41,15 +40,16 @@ export const FilterWrapper: React.FC = ({ children }) => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding: `20px ${HORIZONTAL_PADDING}px`,
-      }}
-    >
-      {children}
-      <ProgramFilterSelect options={options} handleChange={handleChange} />
-    </div>
+    <Padder vertical={30}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        {children}
+        <ProgramFilterSelect options={options} handleChange={handleChange} />
+      </div>
+    </Padder>
   );
 };

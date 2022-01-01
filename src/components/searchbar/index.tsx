@@ -1,22 +1,40 @@
 import React from "react";
 import { Input } from 'antd';
-import { CARD_WIDTH } from "styles";
+import { BREAKPOINTS, CARD_PADDING } from "styles";
+import styled from "styled-components";
 const { Search } = Input;
-
-const numCardForAlignment = 2;
 
 interface Searchbar {
   onSearch: (value: string) => void;
 }
 
+const SearchbarStyle = styled(Search)`
+  flex: calc(200% / 7 - ${CARD_PADDING}px);
+  max-width: calc(200% / 7 - ${CARD_PADDING}px);
+
+  @media (width < ${BREAKPOINTS.md}) {
+    flex: calc(200% / 6 - ${CARD_PADDING}px);
+    max-width: calc(200% / 6 - ${CARD_PADDING}px);
+  }
+
+  @media (width < ${BREAKPOINTS.sm}) {
+    flex: calc(100% / 3 - ${CARD_PADDING}px);
+    max-width: calc(100% / 3 - ${CARD_PADDING}px);
+  }
+
+  @media (width < ${BREAKPOINTS.xs}) {
+    flex: calc(100% / 2 - ${CARD_PADDING}px);
+    max-width: calc(100% / 2 - ${CARD_PADDING}px);
+  }
+`;
+
 export const Searchbar: React.FC<Searchbar> = ({ onSearch }) => {
   return (
-    <Search
+    <SearchbarStyle
       placeholder="Search..."
       allowClear
       enterButton
       onSearch={onSearch}
-      style={{ width: CARD_WIDTH * numCardForAlignment }}
     />
   );
 };
