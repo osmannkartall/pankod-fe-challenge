@@ -4,13 +4,14 @@ This project was generated with [superplate](https://github.com/pankod/superplat
 
 ## Deployment
 
-[See app deployed on Heroku](https://pankod-fe-osmannkartall.herokuapp.com/)
+[See app deployed on Heroku](https://pankod-fe-osmannkartall.herokuapp.com/) (It may take time to load).
 
 ## Tech Stack
 
 - React with TypeScript
 - [Jest](https://github.com/facebook/jest) & [enzyme](https://github.com/enzymejs/enzyme) for unit testing
 - [zustand](https://github.com/pmndrs/zustand) for state management
+- [styled-components](https://github.com/styled-components/styled-components)
 
 ## Details
 
@@ -18,7 +19,5 @@ This project was generated with [superplate](https://github.com/pankod/superplat
 
 ## TODO
 
-- Responsive ui
 - Fixing style values by following the design measurements in sketch file
-- Using styling technique different from React's inline-styling
 - More unit tests
