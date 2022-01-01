@@ -3,21 +3,19 @@ import { Typography } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router'
 import { WHITE } from "colors";
+import styled from "styled-components";
 
 const { Title, Text } = Typography;
 
-const CARD_WIDTH = 192;
-const CARD_HEIGHT = 250;
-
-const cardTitleStyle: React.CSSProperties = {
-  marginTop: 20,
-  fontSize: 15,
-};
+const CardTitleWrapper = styled.div`
+  margin-top: 20px;
+  font-size: 15px;
+`;
 
 const CardTitle: React.FC<{ title: string }> = ({ title }) => (
-  <div style={cardTitleStyle}>
+  <CardTitleWrapper>
     <Text>{title}</Text>
-  </div>
+  </CardTitleWrapper>
 );
 
 export const ProgramCard: React.FC<{ title: string, imageUrl: string }> = ({ title, imageUrl }) => {
@@ -31,33 +29,32 @@ export const ProgramCard: React.FC<{ title: string, imageUrl: string }> = ({ tit
   );
 };
 
+const TileCardWrapper = styled.div`
+  background-color: black;
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const PlayIcon = styled(PlayCircleOutlined)`
+  color: WHITE;
+  font-size: 100px;
+  opacity: 0.2;
+  position: absolute;
+  z-index: 2;
+`;
+
 export const TileCard: React.FC<{ title: string }> = ({ title }) => {
   const router = useRouter();
 
   return (
-    <>
-      <div
-        style={{
-          backgroundColor: "black",
-          width: CARD_WIDTH,
-          height: CARD_HEIGHT,
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
-        onClick={() => router.push(`/${title}`)}
-      >
-        <PlayCircleOutlined
-          style={{
-            color: WHITE,
-            fontSize: 100,
-            opacity: .2,
-            position: "absolute",
-            zIndex: 2,
-          }}
-        />
+    <div>
+      <TileCardWrapper onClick={() => router.push(`/${title}`)}>
+        <PlayIcon />
         <Title
           style={{
             color: WHITE,
@@ -67,8 +64,8 @@ export const TileCard: React.FC<{ title: string }> = ({ title }) => {
           >
           {title?.toString().toUpperCase()}
         </Title>
-      </div>
+      </TileCardWrapper>
       <CardTitle title={`Popular ${title}`} />
-    </>
+    </div>
   );
 }

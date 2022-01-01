@@ -12,7 +12,7 @@ const Row = styled(AntRow)`
   flex-wrap: wrap;
 `;
 
-const CardWrapper = styled(Col)`
+const ProgramCardsWrapper = styled(Col)`
   flex: calc(100% / 7);
   max-width: calc(100% / 7);
   padding: 40px ${CARD_PADDING}px;
@@ -33,17 +33,43 @@ const CardWrapper = styled(Col)`
   }
 `;
 
+const TileCardsWrapper = styled(Col)`
+  flex: calc(100% / 7);
+  max-width: calc(100% / 7);
+  padding: 40px ${CARD_PADDING}px;
+
+  @media (width < ${BREAKPOINTS.lg}) {
+    flex: calc(100% / 6);
+    max-width: calc(100% / 6);
+  }
+
+  @media (width < ${BREAKPOINTS.md}) {
+    flex: calc(100% / 5);
+    max-width: calc(100% / 5);
+  }
+
+  @media (width < ${BREAKPOINTS.sm}) {
+    flex: calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  @media (width < ${BREAKPOINTS.xs}) {
+    flex: calc(100% / 2);
+    max-width: calc(100% / 2);
+  }
+`;
+
 export const TileCards: React.FC = () => {
   return (
-    <Padder horizontal={HORIZONTAL_PADDING - CARD_PADDING}>
+    <CardsPadder horizontal={HORIZONTAL_PADDING - CARD_PADDING}>
       <Row>
         {(streamItems ?? []).map((streamItem) => (
-          <CardWrapper key={streamItem}>
+          <TileCardsWrapper key={streamItem}>
             <TileCard title={streamItem} />
-          </CardWrapper>
+          </TileCardsWrapper>
         ))}
       </Row>
-    </Padder>
+    </CardsPadder>
   );
 };
 
@@ -55,7 +81,7 @@ export const ProgramCards: React.FC = () => {
       <CardsPadder horizontal={HORIZONTAL_PADDING - CARD_PADDING}>
         <Row>
           {(programs ?? []).map((program) => (
-            <CardWrapper key={program.title}>
+            <ProgramCardsWrapper key={program.title}>
               <ProgramCard
                 title={
                   program?.title?.length < 20
@@ -63,7 +89,7 @@ export const ProgramCards: React.FC = () => {
                     : `${program?.title?.substring(0, 20)}...`}
                 imageUrl={program.images["Poster Art"].url}
               />
-            </CardWrapper>
+            </ProgramCardsWrapper>
           ))}
         </Row>
       </CardsPadder>
