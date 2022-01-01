@@ -15,7 +15,7 @@ This project was generated with [superplate](https://github.com/pankod/superplat
 
 ## Details
 
-- Used a zustand persistent store as mock-db. Pagination and searching is done by using that store. Any result of pagination or searching is saved in another zustand store.
+- Used a zustand persistent store as mock-db. It is populated after the first navigation on the home page: `https://pankod-fe-osmannkartall.herokuapp.com/` or `http://localhost:3000/`. Pagination and searching is done by using that store. Any result of pagination or searching is saved in another zustand store.
 
 ## TODO
 
